@@ -5,6 +5,6 @@ public enum TipoTamanho {
 	M, 
 	G, 
 	GG, 
-	XG, 
-	BL;
+	EG, 
+	EGG;
 }

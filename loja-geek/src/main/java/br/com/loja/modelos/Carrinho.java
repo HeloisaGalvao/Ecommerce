@@ -12,6 +12,7 @@ public class Carrinho {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCarrinho;
 	private int qtdItens;
+	private int qtdProduto;
 	private BigDecimal valorTotal;
 	private Produto produto;
 	private Cliente cliente;
@@ -20,14 +21,20 @@ public class Carrinho {
 		
 	}
 	
-	public Carrinho(int idCarrinho, int qtdItens, BigDecimal valorTotal, Produto produto, Cliente cliente) {
+	public Carrinho(int idCarrinho, int qtdItens, BigDecimal valorTotal, int qtdProduto) {
 		this.idCarrinho = idCarrinho;
 		this.qtdItens = qtdItens;
 		this.valorTotal = valorTotal;
-		this.produto = produto;
-		this.cliente = cliente;
+		this.qtdProduto = qtdProduto;
 	}
 
+	public int getQtdProduto() {
+		return qtdProduto;
+	}
+
+	public void setQtdProduto(int qtdProduto) {
+		this.qtdProduto = qtdProduto;
+	}
 
 	public int getIdCarrinho() {
 		return idCarrinho;

@@ -17,7 +17,8 @@ public class Cliente implements EntidadeIN  {
 	@Id
 	@Column(name="CpfCliente", length=14)
 	private String cpf;
-
+	
+	
 	public Cliente() {
 		
 	}

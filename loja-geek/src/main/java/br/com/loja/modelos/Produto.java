@@ -20,18 +20,19 @@ public class Produto implements EntidadeIN {
 	private BigDecimal preco;
 	private String descricao;
 	@Enumerated(EnumType.STRING)
-	private TipoTamanho tamanho;	
-	private String tipoPorduto;
+	private TipoTamanho tamanho;
+	@Enumerated(EnumType.STRING)
+	private Modelo modelo;
 	
 	@ManyToOne
 	private Categoria categoria;
 	
-	public Produto(int idProduto, BigDecimal preco, String descricao, TipoTamanho tamanho, String tipoProduto){
+	public Produto(int idProduto, BigDecimal preco, String descricao, TipoTamanho tamanho, Modelo modelo){
 		this.idProduto = idProduto;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.tamanho = tamanho;
-		this.tipoPorduto= tipoProduto;
+		this.modelo= modelo;
 	}
 	
 	public Produto() {
@@ -55,12 +56,12 @@ public class Produto implements EntidadeIN {
 		this.tamanho = tamanho;
 	}
 
-	public String getTipoPorduto() {
-		return tipoPorduto;
+	public Modelo getModelo() {
+		return modelo;
 	}
 
-	public void setTipoPorduto(String tipoPorduto) {
-		this.tipoPorduto = tipoPorduto;
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
 	}
 
 	public int getIdProduto() {

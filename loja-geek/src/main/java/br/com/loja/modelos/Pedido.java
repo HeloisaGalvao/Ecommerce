@@ -1,6 +1,7 @@
 package br.com.loja.modelos;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,19 +10,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.loja.interfaces.EntidadeIN;
 @Entity
-public class Venda implements EntidadeIN {
+public class Pedido implements EntidadeIN {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idVenda;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar data;
-	
 	private String logradouro;
 	private String numero;
 	private String complemento;
@@ -31,15 +32,18 @@ public class Venda implements EntidadeIN {
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	
+	private FormaDePagamento formaDePagamento;
 	@ManyToOne
-	private Produto produto;
+	private List <Produto> produto;
 	
-	public Venda() {
+	@OneToOne
+	private Cliente cliente;
+	public Pedido() {
 		
 	}
 	
-	public Venda(int idVenda, Calendar data, String logradouro, String numero, String complemento, String cEP,
-			String bairro, String cidade, Estado estado, Produto produto) {
+	public Pedido(int idVenda, Calendar data, String logradouro, String numero, String complemento, String cEP,
+			String bairro, String cidade, Estado estado) {
 		super();
 		this.idVenda = idVenda;
 		this.data = data;
@@ -50,7 +54,14 @@ public class Venda implements EntidadeIN {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.estado = estado;
-		this.produto = produto;
+	}
+
+	public FormaDePagamento getFormaDePagamento() {
+		return formaDePagamento;
+	}
+
+	public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+		this.formaDePagamento = formaDePagamento;
 	}
 
 	public Calendar getData() {
@@ -125,12 +136,20 @@ public class Venda implements EntidadeIN {
 		this.idVenda = idVenda;
 	}
 	
-	public Produto getProduto() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
+	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override
