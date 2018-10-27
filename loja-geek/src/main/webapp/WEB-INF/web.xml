@@ -22,6 +22,6 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ClaseServlet</servlet-name>
-  	<url-pattern>/Teste</url-pattern>
+  	<url-pattern>/</url-pattern>
   </servlet-mapping>
 </web-app>
