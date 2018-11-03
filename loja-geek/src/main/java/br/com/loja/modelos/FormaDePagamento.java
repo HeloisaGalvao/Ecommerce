@@ -22,8 +22,7 @@ public class FormaDePagamento {
 	}
 	
 	public FormaDePagamento(int idPagamento, TipoDePagamento tipoDePagamento, BigDecimal valor, String numeroCartao,
-			String codigoSeguranca, String validade, String nomeTitular) {
-		super();
+		String codigoSeguranca, String validade, String nomeTitular) {
 		this.idPagamento = idPagamento;
 		this.tipoDePagamento = tipoDePagamento;
 		this.valor = valor;

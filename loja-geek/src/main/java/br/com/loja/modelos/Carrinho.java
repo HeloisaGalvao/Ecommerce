@@ -1,11 +1,14 @@
 package br.com.loja.modelos;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 @Entity
 public class Carrinho {
 	@Id
@@ -14,8 +17,11 @@ public class Carrinho {
 	private int qtdItens;
 	private int qtdProduto;
 	private BigDecimal valorTotal;
-	private Produto produto;
+	@OneToMany
+	private List <Produto> produto;
+	@OneToOne
 	private Cliente cliente;
+	
 	
 	public Carrinho() {
 		
@@ -60,11 +66,11 @@ public class Carrinho {
 		this.valorTotal = valorTotal;
 	}
 
-	public Produto getProduto() {
+	public List<Produto> getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
 

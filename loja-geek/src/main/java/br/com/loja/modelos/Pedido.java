@@ -9,7 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,19 +32,19 @@ public class Pedido implements EntidadeIN {
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	
+	@OneToOne
 	private FormaDePagamento formaDePagamento;
-	@ManyToOne
+	@OneToMany
 	private List <Produto> produto;
-	
 	@OneToOne
 	private Cliente cliente;
+	
 	public Pedido() {
 		
 	}
 	
 	public Pedido(int idVenda, Calendar data, String logradouro, String numero, String complemento, String cEP,
 			String bairro, String cidade, Estado estado) {
-		super();
 		this.idVenda = idVenda;
 		this.data = data;
 		this.logradouro = logradouro;
