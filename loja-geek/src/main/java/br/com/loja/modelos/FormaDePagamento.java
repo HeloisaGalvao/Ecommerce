@@ -3,12 +3,17 @@ package br.com.loja.modelos;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.loja.interfaces.EntidadeIN;
+
 @Entity
-public class FormaDePagamento {
+public class FormaDePagamento implements EntidadeIN {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPagamento;
 	private TipoDePagamento tipoDePagamento;
 	private BigDecimal valor;
@@ -75,6 +80,11 @@ public class FormaDePagamento {
 	}
 	public void setNomeTitular(String nomeTitular) {
 		this.nomeTitular = nomeTitular;
+	}
+
+	@Override
+	public Object getChavePrimaria() {
+		return getIdPagamento();
 	}
 	
 }

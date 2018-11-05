@@ -1,7 +1,6 @@
 package br.com.loja.modelos;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import br.com.loja.interfaces.EntidadeIN;
 
@@ -25,8 +23,6 @@ public class Produto implements EntidadeIN {
 	private TipoTamanho tamanho;
 	@Enumerated(EnumType.STRING)
 	private Modelo modelo;
-	@OneToMany
-	private  List <Pedido> pedido;
 	@ManyToOne
 	private Categoria categoria;
 	
@@ -40,14 +36,6 @@ public class Produto implements EntidadeIN {
 	
 	public Produto() {
 		
-	}
-
-	public List<Pedido> getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(List<Pedido> pedido) {
-		this.pedido = pedido;
 	}
 
 	public Categoria getCategoria() {

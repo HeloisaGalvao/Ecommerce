@@ -3,6 +3,7 @@ package br.com.loja.modelos;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -34,8 +35,8 @@ public class Pedido implements EntidadeIN {
 	
 	@OneToOne
 	private FormaDePagamento formaDePagamento;
-	@OneToMany
-	private List <Produto> produto;
+	@OneToMany(mappedBy="idPedido", cascade=CascadeType.ALL)
+	private List <ItensDoPedido> itensDoPedido;
 	@OneToOne
 	private Cliente cliente;
 	
@@ -136,12 +137,12 @@ public class Pedido implements EntidadeIN {
 		this.idVenda = idVenda;
 	}
 	
-	public List<Produto> getProduto() {
-		return produto;
+	public List<ItensDoPedido> getItensDoPedido() {
+		return itensDoPedido;
 	}
 
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
+	public void setItensDoPedido(List<ItensDoPedido> itensDoPedido) {
+		this.itensDoPedido = itensDoPedido;
 	}
 	
 	public Cliente getCliente() {
@@ -156,7 +157,5 @@ public class Pedido implements EntidadeIN {
 	public Object getChavePrimaria() {
 		return getIdVenda();
 	}
-	
-	
 
 }
