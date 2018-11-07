@@ -42,7 +42,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>ServletCliente</servlet-name>
-  	<url-pattern>/ServletCliente</url-pattern>
+  	<url-pattern>/servletCliente</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ServletController</servlet-name>
