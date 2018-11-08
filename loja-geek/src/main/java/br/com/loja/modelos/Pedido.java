@@ -153,7 +153,6 @@ public class Pedido implements EntidadeIN {
 		this.cliente = cliente;
 	}
 
-	@Override
 	public Object getChavePrimaria() {
 		return getIdVenda();
 	}

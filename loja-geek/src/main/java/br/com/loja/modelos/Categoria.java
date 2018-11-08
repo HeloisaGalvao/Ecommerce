@@ -21,7 +21,6 @@ public class Categoria implements EntidadeIN {
 	}
 	
 	public Categoria(int idCategoria,String nomeCategoria) {
-		super();
 		this.idCategoria = idCategoria;
 		this.nomeCategoria = nomeCategoria;
 
@@ -43,9 +42,8 @@ public class Categoria implements EntidadeIN {
 		this.idCategoria = idCategoria;
 	}
 
-	@Override
 	public Object getChavePrimaria() {
 		return getIdCategoria();
 	}
-		
+	
 }

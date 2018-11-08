@@ -51,9 +51,10 @@ public class Estoque implements EntidadeIN{
 		this.produto = produto;
 	}
 
-	@Override
 	public Object getChavePrimaria() {
 		return getIdEstoque();
 	}
+
+	
 	
 }

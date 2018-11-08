@@ -70,8 +70,8 @@ public class Cliente implements EntidadeIN  {
 		this.cpf = cpf;
 	}
 
-	@Override
 	public Object getChavePrimaria() {
 		return getCpf();
-	}	
+	}
+	
 }

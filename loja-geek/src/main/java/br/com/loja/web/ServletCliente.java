@@ -20,6 +20,7 @@ public class ServletCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String CADASTRO = "/jsp/formCadastro.jsp";
+	private static final String LOGIN = "/jsp/login.jsp";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("get");
@@ -59,14 +60,15 @@ public class ServletCliente extends HttpServlet {
 				EntidadeIN validaCliente = dao.consultarPorChavePrimaria(Cliente.class, cpf);
 				
 				if (validaCliente == null){
-					
 					Cliente cliente = new Cliente();
 					cliente.setNomeCliente(nomeCliente);
 					cliente.setEmail(email);
 					cliente.setLogin(login);
 					cliente.setSenha(senha);
 					cliente.setCpf(cpf);
-					dao.inserir(cliente);
+					//dao.inserir(cliente);
+					RequestDispatcher rd = request.getRequestDispatcher("/jsp/login.jsp");
+					rd.forward(request,	response);
 				}else {
 					System.out.println("cpf ja existe" + cpf);
 				}
@@ -85,9 +87,6 @@ public class ServletCliente extends HttpServlet {
 		}catch (Exception e) {
 			 
 		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/init.jsp");
-		rd.forward(request,	response);
 	}
 
 }
