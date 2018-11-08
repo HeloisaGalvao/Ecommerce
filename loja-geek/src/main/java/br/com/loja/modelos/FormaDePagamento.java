@@ -82,6 +82,7 @@ public class FormaDePagamento implements EntidadeIN {
 		this.nomeTitular = nomeTitular;
 	}
 
+	@Override
 	public Object getChavePrimaria() {
 		return getTipoDePagamento();
 	}

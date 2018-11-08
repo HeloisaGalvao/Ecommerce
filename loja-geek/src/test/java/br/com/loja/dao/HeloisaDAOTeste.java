@@ -82,18 +82,44 @@ public class HeloisaDAOTeste {
 		
 		pedido.setFormaDePagamento(fdp);
 		
-		PedidoDAO ped = new PedidoDAO();		
-		ped.inserir(pedido);
+		//PedidoDAO ped = new PedidoDAO();		
+		//ped.inserir(pedido);
 		
 		ItensDoPedido itens = new ItensDoPedido();
 		itens.setIdPedido(pedido);
 		itens.setIdProduto(p);
 		itens.setQuantidade(1);
 		ItensDoPedidoDAO ipd = new ItensDoPedidoDAO();
-		//ipd.inserir(itens);
+		ipd.inserir(itens);
+		
 		
 		
 	}
 	
+	@Test
+	public void atualizarEstoque() {
+		//-- parâmetros considerados --
+		Produto p = new Produto();
+		p.setIdProduto(1);
+		
+		ItensDoPedido itens = new ItensDoPedido();
+		itens.setQuantidade(1);
+		//--
+		
+		EstoqueDAO ed = new EstoqueDAO();
+	
+		Estoque estoque = new Estoque();
+		
+		estoque = ed.consultarEstoqueProduto(p.getIdProduto());
+		
+		// colocar validação antes de inserir pedido 
+		if (estoque.getQuantidade() < 1)
+			System.out.println("estoque insuficiente");
+		else {
+			estoque.setQuantidade(estoque.getQuantidade() - itens.getQuantidade());
+
+			ed.alterar(estoque);
+		}
+	}
 
 }

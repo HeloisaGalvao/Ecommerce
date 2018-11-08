@@ -87,6 +87,7 @@ public class Produto implements EntidadeIN {
 		this.descricao = descricao;
 	}
 
+	@Override
 	public Object getChavePrimaria() {
 		return getIdProduto();
 	}

@@ -11,12 +11,24 @@ public abstract class AbstractDAO implements InterfaceDAO {
 		inserir(pEntidade, UtilJPA.getEntityManager(), true);
 	}
 				
-	public void inserir(
-		EntidadeIN pEntidade, EntityManager pEM, boolean pFecharEM) {
+	public void inserir(EntidadeIN pEntidade, EntityManager pEM, boolean pFecharEM) {
 			pEM.getTransaction().begin();
 			pEM.persist(pEntidade);
 			pEM.getTransaction().commit();
 			if ( pFecharEM ) {
+			pEM.close();
+		}
+	}
+	
+	public void alterar(EntidadeIN pEntidade) {
+		alterar(pEntidade, UtilJPA.getEntityManager(), true);
+	}
+	
+	public void alterar(EntidadeIN pEntidade, EntityManager pEM, boolean pFecharEM) {
+		pEM.getTransaction().begin();
+		pEM.merge(pEntidade);
+		pEM.getTransaction().commit();
+		if ( pFecharEM ) {
 			pEM.close();
 		}
 	}

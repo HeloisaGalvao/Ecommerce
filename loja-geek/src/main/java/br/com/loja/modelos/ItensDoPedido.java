@@ -55,7 +55,8 @@ public class ItensDoPedido implements EntidadeIN {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-
+	
+	@Override
 	public Object getChavePrimaria() {
 		return getIdItensDoPedido();
 	}

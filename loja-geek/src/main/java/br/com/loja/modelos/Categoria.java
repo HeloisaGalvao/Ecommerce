@@ -42,6 +42,7 @@ public class Categoria implements EntidadeIN {
 		this.idCategoria = idCategoria;
 	}
 
+	@Override
 	public Object getChavePrimaria() {
 		return getIdCategoria();
 	}
