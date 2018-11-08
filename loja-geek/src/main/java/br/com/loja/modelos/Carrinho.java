@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import br.com.loja.interfaces.EntidadeIN;
 @Entity
-public class Carrinho {
+public class Carrinho implements EntidadeIN{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCarrinho;
@@ -80,6 +82,11 @@ public class Carrinho {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	@Override
+	public Object getChavePrimaria() {
+		return getIdCarrinho();
 	}
 	
 }
