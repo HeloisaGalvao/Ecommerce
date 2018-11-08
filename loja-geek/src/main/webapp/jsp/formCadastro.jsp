@@ -19,7 +19,7 @@
 				<tr>
 					<td><label for="nomeCliente">Nome Sobrenome: </label></td>
 					<td align="left"><input type="text" name="nomeCliente" required
-					placeholder="Fulano de tal" pattern="[a-z\s]+$"></td>
+					placeholder="Fulano de tal" pattern="(\b[A-Za-z](?!\s))"></td>
 				</tr>
 				<tr>
 					<td><label>CPF:</label></td>

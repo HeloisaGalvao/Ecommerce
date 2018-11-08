@@ -46,7 +46,7 @@ public class ServletCliente extends HttpServlet {
 						
 			//validando os valores recebidos
 			if(senha != senhaconfir) {
-				System.out.println("As senhas nao são iguais \n");
+				System.out.println("As senhas nao sï¿½o iguais \n");
 			}else {
 				if (senha.isEmpty() || senhaconfir.isEmpty()) {
 					System.out.println("O campo senha nao deve ficar em branco \n");
@@ -67,7 +67,7 @@ public class ServletCliente extends HttpServlet {
 					cliente.setSenha(senha);
 					cliente.setCpf(cpf);
 					//dao.inserir(cliente);
-					RequestDispatcher rd = request.getRequestDispatcher("/jsp/login.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher(LOGIN);
 					rd.forward(request,	response);
 				}else {
 					System.out.println("cpf ja existe" + cpf);

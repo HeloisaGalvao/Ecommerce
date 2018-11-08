@@ -10,58 +10,8 @@
   	<description></description>
   	<servlet-class>br.com.loja.web.ServletCliente</servlet-class>
   </servlet>
-  <servlet>
-  	<servlet-name>ServletController</servlet-name>
-  	<display-name>ServletController</display-name>
-  	<description></description>
-  	<servlet-class>br.com.loja.web.ServletController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ServletCarrinho</servlet-name>
-  	<display-name>ServletCarrinho</display-name>
-  	<description></description>
-  	<servlet-class>br.com.loja.web.ServletCarrinho</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ServletCategoria</servlet-name>
-  	<display-name>ServletCategoria</display-name>
-  	<description></description>
-  	<servlet-class>br.com.loja.web.ServletCategoria</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ServletFormaDePagamento</servlet-name>
-  	<display-name>ServletFormaDePagamento</display-name>
-  	<description></description>
-  	<servlet-class>br.com.loja.web.ServletFormaDePagamento</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ServletPedido</servlet-name>
-  	<display-name>ServletPedido</display-name>
-  	<description></description>
-  	<servlet-class>br.com.loja.web.ServletPedido</servlet-class>
-  </servlet>
   <servlet-mapping>
   	<servlet-name>ServletCliente</servlet-name>
   	<url-pattern>/servletCliente</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ServletController</servlet-name>
-  	<url-pattern>/loja-geek</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ServletCarrinho</servlet-name>
-  	<url-pattern>/ServletCarrinho</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ServletCategoria</servlet-name>
-  	<url-pattern>/ServletCategoria</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ServletFormaDePagamento</servlet-name>
-  	<url-pattern>/ServletFormaDePagamento</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ServletPedido</servlet-name>
-  	<url-pattern>/ServletPedido</url-pattern>
   </servlet-mapping>
 </web-app>
