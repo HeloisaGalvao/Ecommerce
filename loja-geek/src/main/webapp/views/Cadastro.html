@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      	xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/facelets"
+		xmlns:c="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>Cadastro</title>
+</h:head>
+<h:body>
+	<h:form action="novoCadastro" method="post">
+		<!-- DADOS PESSOAIS-->
+		<h:fieldset>
+			<h:legend>Dados Pessoais</h:legend>
+			<h:table>
+				<h:tr>
+					<h:td><label for="nomeCliente">Nome Sobrenome: </label></h:td>
+					<h:inputText value="" />
+				</h:tr>
+				<h:tr>
+					<h:td><label>CPF:</label></h:td>
+					<h:inputText value="" />
+				</h:tr>
+			</h:table>
+			<!-- DADOS DE LOGIN -->
+			<h:fieldset>
+				<legend>Dados de login</legend>
+				<h:table>
+					<h:tr>
+						<h:td><h:label for="email">E-mail: </h:label></h:td>
+						<h:inputText value="" />
+					</h:tr>
+					<h:tr>
+						<h:td><h:label for="login">Login: </h:label></h:td>
+						<h:h:inputText value="" />
+					</h:tr>
+					<h:tr>
+						<h:td>
+							<label for="pass">Senha: </label>
+						</h:td>
+						<h:td align="left" />
+						<h:inputText value="" />
+						</h:td>
+					</h:tr>
+					<h:tr>
+						<h:td><h:label for="passconfirm">Confirme a senha: </h:label></h:td>
+						<h:td align="left"><h:inputText value="" /></h:td>
+					</h:tr>
+				</h:table>
+			</h:fieldset>
+			<h:br/>
+		</h:fieldset>
+	</h:form>
+</h:body>
+
+</html>
