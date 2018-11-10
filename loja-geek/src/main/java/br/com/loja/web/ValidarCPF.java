@@ -1,4 +1,4 @@
-package br.com.loja.regras;
+package br.com.loja.web;
 
 import java.util.InputMismatchException;
 
