@@ -39,8 +39,6 @@ public class LoginBM {
 	
 	public void logar() throws IOException {
 		ClienteDAO clienteDAO = new ClienteDAO();
-		String login1 = login;
-		String senha1 = senha;
 		List<Cliente> existe = clienteDAO.getLoginSenha(login, senha);
 		System.out.println("a");
 		if(existe.equals(login) && existe.equals(senha)) {

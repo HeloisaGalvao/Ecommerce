@@ -37,9 +37,6 @@ public class ProdutoTMB {
     	lista.add(p1);
     	return lista;
     	
-    	
-    	
-
 	}
 
 	public void setLista(List<Produto> lista) {

@@ -100,9 +100,11 @@ public class ClienteMB implements Serializable {
 			//Verficar se o login esta disponivel
 			List<Cliente> existe = clienteDAO.getLogin(login);
 			if(existe.isEmpty() ) {
+			
 				//Valdiar se cliente ja esta cadastrado
 				EntidadeIN validaCliente = clienteDAO.consultarPorChavePrimaria(Cliente.class, CPFMask);
 				if (validaCliente == null){
+					
 					Cliente cliente = new Cliente();
 					cliente.setNomeCliente(nomeCliente);
 					cliente.setEmail(email);
@@ -114,8 +116,9 @@ public class ClienteMB implements Serializable {
 					
 					FacesContext context = FacesContext.getCurrentInstance();
 			        context.addMessage(null, new FacesMessage("Successful",  "Seja bem vindo " + cliente.getNomeCliente())); 
-			        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 			        
+			        //FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+			       
 				}else {
 					FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Cliente ja cadstrado",null);
 					FacesContext.getCurrentInstance().addMessage(null, msg);

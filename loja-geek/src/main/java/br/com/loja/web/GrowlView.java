@@ -1,10 +1,10 @@
 package br.com.loja.web;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
-@ManagedBean
+@Named
 public class GrowlView {
      
     private String message;
