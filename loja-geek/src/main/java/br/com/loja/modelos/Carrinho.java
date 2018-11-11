@@ -1,6 +1,5 @@
 package br.com.loja.modelos;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,7 +17,7 @@ public class Carrinho implements EntidadeIN{
 	private int idCarrinho;
 	private int qtdItens;
 	private int qtdProduto;
-	private BigDecimal valorTotal;
+	private double valorTotal;
 	@OneToMany
 	private List <Produto> produto;
 	@OneToOne
@@ -29,7 +28,7 @@ public class Carrinho implements EntidadeIN{
 		
 	}
 	
-	public Carrinho(int idCarrinho, int qtdItens, BigDecimal valorTotal, int qtdProduto) {
+	public Carrinho(int idCarrinho, int qtdItens, double valorTotal, int qtdProduto) {
 		this.idCarrinho = idCarrinho;
 		this.qtdItens = qtdItens;
 		this.valorTotal = valorTotal;
@@ -60,11 +59,11 @@ public class Carrinho implements EntidadeIN{
 		this.qtdItens = qtdItens;
 	}
 
-	public BigDecimal getValorTotal() {
+	public double getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(BigDecimal valorTotal) {
+	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 

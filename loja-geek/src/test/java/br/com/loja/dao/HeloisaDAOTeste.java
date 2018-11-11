@@ -1,8 +1,6 @@
 package br.com.loja.dao;
 
 
-import java.math.BigDecimal;
-
 import org.junit.Test;
 
 import br.com.loja.modelos.Categoria;
@@ -47,7 +45,7 @@ public class HeloisaDAOTeste {
 		Produto p = new Produto();
 		p.setDescricao("Moleton de Star Wars");
 		p.setModelo(Modelo.FEMININO);
-		p.setPreco(BigDecimal.valueOf(7999));
+	
 		p.setTamanho(TipoTamanho.P);		
 		p.setCategoria(ct);
 		
