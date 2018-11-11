@@ -56,4 +56,22 @@ public class LoginBM {
 		
 	}
 	
+	public void logarT() throws IOException {
+		ClienteDAO clienteDAO = new ClienteDAO();
+		Cliente existe = clienteDAO.getLoginSenhaT(login, senha);
+		System.out.println("a");
+		if(existe.getLogin().equals(login) && existe.getSenha().equals(senha)) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+		}else {
+			Cliente naoExiste = clienteDAO.getLoginT(login);
+			if(naoExiste.toString().isEmpty()) {
+				FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Cliente não cadastrado",null);
+				FacesContext.getCurrentInstance().addMessage(null, msg);
+			}else {
+				FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"login ou senha invalido",null);
+				FacesContext.getCurrentInstance().addMessage(null, msg);
+			}
+		}	
+	}
+	
 }
