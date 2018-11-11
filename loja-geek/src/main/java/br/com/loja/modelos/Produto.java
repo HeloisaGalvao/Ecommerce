@@ -1,7 +1,5 @@
 package br.com.loja.modelos;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,7 +15,7 @@ public class Produto implements EntidadeIN {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idProduto;
-	private BigDecimal preco;
+	private double preco;
 	private String descricao;
 	@Enumerated(EnumType.STRING)
 	private TipoTamanho tamanho;
@@ -26,7 +24,7 @@ public class Produto implements EntidadeIN {
 	@ManyToOne
 	private Categoria categoria;
 	
-	public Produto(int idProduto, BigDecimal preco, String descricao, TipoTamanho tamanho, Modelo modelo){
+	public Produto(int idProduto, double preco, String descricao, TipoTamanho tamanho, Modelo modelo){
 		this.idProduto = idProduto;
 		this.descricao = descricao;
 		this.preco = preco;
@@ -38,12 +36,28 @@ public class Produto implements EntidadeIN {
 		
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public int getIdProduto() {
+		return idProduto;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public TipoTamanho getTamanho() {
@@ -62,29 +76,12 @@ public class Produto implements EntidadeIN {
 		this.modelo = modelo;
 	}
 
-	public int getIdProduto() {
-		return idProduto;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
-	}
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
-
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	@Override
