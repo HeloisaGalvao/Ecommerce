@@ -115,7 +115,7 @@ public class ClienteMB implements Serializable {
 					clienteDAO.inserir(cliente);
 					
 					FacesContext context = FacesContext.getCurrentInstance();
-			        context.addMessage(null, new FacesMessage("Successful",  "Seja bem vindo " + cliente.getNomeCliente())); 
+			        context.addMessage(null, new FacesMessage("Successful",  "Seja bem vindo(a) " + cliente.getNomeCliente())); 
 			        
 			        //FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
 			       
