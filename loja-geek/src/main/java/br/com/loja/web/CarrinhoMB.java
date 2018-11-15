@@ -87,7 +87,7 @@ public class CarrinhoMB {
 		return (preco * qtde);
 	}
 	
-	/*public void removerItem (Integer rowIndex) {
+	public void removerItem (int rowIndex) {
 		lista.remove(rowIndex);
-	}*/
+	}
 }
