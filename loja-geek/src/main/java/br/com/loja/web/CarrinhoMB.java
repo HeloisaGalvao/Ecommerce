@@ -12,7 +12,37 @@ import br.com.loja.modelos.TipoTamanho;
 @ManagedBean
 public class CarrinhoMB {
 	
+	//final Double valor = 10.0;
+	private Double valor;
+	
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	private Integer spinner = 1;
+	private Double atualValor = 0.0;
 	private List<Produto> lista = new ArrayList<Produto>();
+	
+	public Double getValor() {
+		return valor;
+	}
+
+	public Integer getSpinner() {
+		return spinner;
+	}
+
+	public void setSpinner(Integer spinner) {
+		this.spinner = spinner;
+	}
+	
+	public Double getAtualValor() {
+		setAtualValor(valor * spinner);
+		return this.atualValor;
+	}
+	
+	public void setAtualValor(Double atualValor) {
+			this.atualValor = atualValor;			
+	}
 	
 	public List<Produto> getLista() {
 		Produto produto = new Produto();
@@ -24,8 +54,10 @@ public class CarrinhoMB {
     	TipoTamanho p = TipoTamanho.P;
     	produto.setTamanho(p);
     	produto.setPreco(29.99);
+    	setValor(produto.getPreco());
     	produto.setQuantidade(1);
-    	produto.setSubtotal(calcularSubtotal(produto.getPreco(), produto.getQuantidade()));
+    	//produto.setSubtotal(calcularSubtotal(produto.getPreco(), produto.getQuantidade()));
+    	produto.setSubtotal(getAtualValor());
     	//produto.setSubtotal(29.99);
     	lista.add(produto);
     	
@@ -36,8 +68,10 @@ public class CarrinhoMB {
     	TipoTamanho pp = TipoTamanho.P;
     	p1.setTamanho(pp);
     	p1.setPreco(49.99);
-    	p1.setQuantidade(2);
-    	p1.setSubtotal(calcularSubtotal(p1.getPreco(), p1.getQuantidade()));
+    	setValor(p1.getPreco());
+    	p1.setQuantidade(1);
+    	//p1.setSubtotal(calcularSubtotal(p1.getPreco(), p1.getQuantidade()));
+    	p1.setSubtotal(getAtualValor());
     	//p1.setSubtotal(99.98);
     	lista.add(p1);
     	
@@ -52,4 +86,8 @@ public class CarrinhoMB {
 	public double calcularSubtotal (double preco, int qtde) {
 		return (preco * qtde);
 	}
+	
+	/*public void removerItem (Integer rowIndex) {
+		lista.remove(rowIndex);
+	}*/
 }

@@ -1,47 +1,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      	xmlns:h="http://xmlns.jcp.org/jsf/html"
-		xmlns:f="http://xmlns.jcp.org/jsf/facelets"
-		xmlns:c="http://xmlns.jcp.org/jsf/core"
-		xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Carrinho</title>
 </h:head>
 <h:body>
 	<h:form>
-		<p:dataTable var="carrinho" value="#{carrinhoMB.lista}">
-		
-		<!-- <p:column headerText="ID"> 
-			<h:outputText value="#{carrinho.idProduto}" />
-		</p:column> -->
-		
-		<p:column headerText="Descricao"> 
-			<h:outputText value="#{carrinho.descricao}" />
-		</p:column>	
-		
-<!-- 		<p:column headerText="Modelo"> 
-			<h:outputText value="#{carrinho.modelo}" />
-		</p:column>	
-		
-		<p:column headerText="Tamanho"> 
-			<h:outputText value="#{carrinho.tamanho}" />
-		</p:column> -->
-		
-		<p:column headerText="Preco"> 
-			<h:outputText value="#{carrinho.preco}" />
-		</p:column>
+		<p:dataTable var="carrinho" value="#{carrinhoMB.lista}" rowIndexVar="rowIndex">
+			<p:column headerText="Descricao">
+				<h:outputText value="#{carrinho.descricao}" />
+			</p:column>
 
-		<p:column headerText="Quantidade"> 
-			<p:spinner value="#{carrinho.quantidade}" min="1" max="100">
-			<p:ajax listener="#{carrinho.refreshForm()}" 
-            update="@form" process="@this" />
-            </p:spinner>
-		</p:column>
-	
-		<p:column headerText="Subtotal"> 
-			<h:outputText value="#{carrinho.subtotal}" />
-		</p:column>
-		
+			<p:column headerText="Preco">
+				<h:outputText value="#{carrinho.preco}" />
+			</p:column>
+
+			<p:column headerText="Quantidade">
+				<p:outputPanel>
+					<p:spinner id="ajaxSpinner" value="#{carrinhoMB.spinner}" min="1">
+						<p:ajax update="ajaxSpinnerValue" process="@this" />
+					</p:spinner>
+				</p:outputPanel>
+			</p:column>
+
+			<p:column headerText="Subtotal">
+				<h:outputText id="ajaxSpinnerValue" value="#{carrinhoMB.atualValor}"
+					style="padding-left: 10px" />
+			</p:column>
+
+	<!-- 		<p:column headerText="Remover">
+				<p:commandLink id="ajax"
+					action="#{carrinhoMB.removerItem(lista)}" update="@form" style="margin-right:20px;">
+					<f:param name="id" value="#{rowIndex}" />
+					<h:outputText value="Remover" />
+				</p:commandLink>
+			</p:column> -->
+
 		</p:dataTable>
 	</h:form>
-</h:body>		
+</h:body>
 </html>
