@@ -45,6 +45,7 @@ public class CarrinhoMB {
 	}
 	
 	public List<Produto> getLista() {
+		
 		Produto produto = new Produto();
 		Produto p1 = new Produto();
     	produto.setIdProduto(1);

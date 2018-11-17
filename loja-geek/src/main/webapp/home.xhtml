@@ -2,10 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:f="http://xmlns.jcp.org/jsf/facelets"
-xmlns:c="http://xmlns.jcp.org/jsf/core">
+xmlns:c="http://xmlns.jcp.org/jsf/core"
+xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"/>
+<script src="./JS/jquery-3.3.1.min.js"></script>
+<script src="./JS/script.js"></script>
 <title>Loja Geek</title>
 </h:head>
 <h:body>
@@ -106,10 +109,16 @@ xmlns:c="http://xmlns.jcp.org/jsf/core">
                     <a href="#"><img class="card-img-top" src="./imagens/imgCamisaCapF.jpg" ></img></a>
                     <div class="card-body">
                       <h4 class="card-title">
-                        <a href="#">Camisa Feminina Capitao America</a>
+                        <a href="#">Camisa Feminina Capitão America</a>
                       </h4>
                       <h5>R$29.99</h5>
-                      <p class="card-text">Camisa Capitao America</p>
+                      <p class="card-text">Camisa Capitão America</p>
+                    </div>
+                   
+                    <div align='center'>
+                    	<p:commandButton id="id1" value="Adicionar" action="#{MB.Action1}" >
+ 							<c:ajax listener="#{MB.Action2}" render="id2" />  
+ 						</p:commandButton>
                     </div>
                     <div class="card-footer">
                       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -117,15 +126,20 @@ xmlns:c="http://xmlns.jcp.org/jsf/core">
                   </div>
                 </div>
     
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4 item">
                   <div class="card h-75">
                     <a href="#"><img class="card-img-top" src="./imagens/imgCamisaRnM.jpg" ></img></a>
                     <div class="card-body">
                       <h4 class="card-title">
-                        <a href="#">Camisa Ricardo e Martinho</a>
+                        <a href="#">Camisa Rick and Morty</a>
                       </h4>
                       <h5>R$29,99</h5>
-                      <p class="card-text">Camisa Feminina Ricardo e Martinho em IT: A Coisa</p>
+                      <p class="card-text">Camisa Feminina Rick and Morty em IT: A Coisa</p>
+                    </div>
+                    <div align='center'>
+                    	<p:commandButton id="id2" value="Adicionar">
+<!--  							<c:ajax listener="#{MB.Action2}" render="id2" />   -->
+ 						</p:commandButton>
                     </div>
                     <div class="card-footer">
                       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -133,8 +147,8 @@ xmlns:c="http://xmlns.jcp.org/jsf/core">
                   </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
-                  <div class="card h-75">
+                <div class="col-lg-4 col-md-6 mb-4 item" >
+                  <div class="card h-75" >
                     <a href="#"><img class="card-img-top" src="./imagens/imgCamisaRL.jpg" ></img></a>
                     <div class="card-body">
                       <h4 class="card-title">
@@ -142,6 +156,11 @@ xmlns:c="http://xmlns.jcp.org/jsf/core">
                       </h4>
                       <h5>R$24,99</h5>
                       <p class="card-text">Camisa Rafiki de Rei Leão </p>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div align='center'>
+                         <p:commandButton id="Add" value="Adicionar"/>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

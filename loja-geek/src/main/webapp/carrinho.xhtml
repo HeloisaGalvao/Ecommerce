@@ -26,6 +26,9 @@
         border-bottom-color: var(--input-border-color, #A8A8A8);
     }
 </style>
+<script src="./JS/jquery-3.3.1.min.js">
+
+</script>
 </h:head>
 <h:body>
 	<h:form>
@@ -49,5 +52,15 @@
         	</h:panelGrid>
 		</p:dataScroller>	
 	</h:form>
-</h:body>		
+</h:body>	
+<script>
+$(function(){
+	setTimeout(function(){
+		var jsonTarefa = localStorage.getItem('obj');
+		var tarefa = JSON.parse(jsonTarefa);
+		console.log(tarefa);	
+	},2000);
+	
+});
+</script>	
 </html>
