@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.Application;
-import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.FacesContext;
 
 import br.com.loja.dao.ProdutoDAO;
 import br.com.loja.modelos.Produto;
@@ -16,7 +12,8 @@ import br.com.loja.modelos.Produto;
 @ManagedBean
 @SessionScoped
 public class ProdutoMB {
-//    daiene
+//    daiene (linda)
+	
 	public ProdutoMB() {
 		ProdutoDAO pd = new ProdutoDAO();
 		this.lista = pd.listarProdutos();
@@ -56,18 +53,8 @@ public class ProdutoMB {
 		System.out.println("removeu");*/
 		ProdutoDAO pd = new ProdutoDAO();
 		pd.excluirPorObjeto(produto);
-		this.refresh();
+		this.lista = new ArrayList<Produto>();
 		
 	}
 
-	public void refresh() {
-		System.out.println("refresh");
-		// teste para atualizar página (NÃO FUNCIONOU)
-		FacesContext context = FacesContext.getCurrentInstance();
-		Application application = context.getApplication();
-		ViewHandler viewHandler = application.getViewHandler();
-		UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());
-		context.setViewRoot(viewRoot);
-		context.renderResponse();
-	}
 }

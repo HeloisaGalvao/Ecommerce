@@ -14,6 +14,7 @@ public class ProdutoDAO extends AbstractDAO {
 		int ZERO = 0;
 		int NOVE = 99;
 		
+		//Listar todos os produtos
 		String QUERY = "Select p From Produto p where idProduto between ?1 and ?2";		
 		
 		TypedQuery<Produto> queryListarProdutos = EM.createQuery(QUERY, Produto.class);
