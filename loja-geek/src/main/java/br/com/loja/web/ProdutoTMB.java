@@ -20,12 +20,10 @@ public class ProdutoTMB {
 	private Categoria categoria;
 
 	private List<Produto> lista = new ArrayList<Produto>();
-	Produto produto ;   
+	private Produto produto ;   
 	
 	public ProdutoTMB() {
-		if (this.produto == null) {
-			this.produto = new Produto();	
-		}
+		produto = new Produto();
 	}
 	
 	public int getIdProduto() {
@@ -34,6 +32,7 @@ public class ProdutoTMB {
 
 	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
+		System.out.println("b");
 	}
 
 	public double getPreco() {
@@ -42,6 +41,7 @@ public class ProdutoTMB {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
+		System.out.println("c");
 	}
 
 	public String getDescricao() {
@@ -50,7 +50,9 @@ public class ProdutoTMB {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+		System.out.println("d");
 	}
+	
 
 	public TipoTamanho getTamanho() {
 		return tamanho;
@@ -77,25 +79,25 @@ public class ProdutoTMB {
 	}
 
 	public List<Produto> getLista() {
-/*		Produto produto = new Produto();
-		Produto p1 = new Produto();
-    	produto.setIdProduto(1);
-    	produto.setDescricao("CAMISA TESTE1");
-    	Modelo m = Modelo.MASCULINO;
-    	produto.setModelo(m);
-    	TipoTamanho p = TipoTamanho.P;
-    	produto.setTamanho(p);
-    	produto.setPreco(29.99);
-    	lista.add(produto);
-    	
-    	p1.setIdProduto(2);
-    	p1.setDescricao("CAMISA TESTE2");
-    	Modelo m1 = Modelo.FEMININO;
-    	p1.setModelo(m1);
-    	TipoTamanho pp = TipoTamanho.P;
-    	p1.setTamanho(pp);
-    	p1.setPreco(49.99);
-    	lista.add(p1);*/
+//		Produto produto = new Produto();
+//		Produto p1 = new Produto();
+//    	produto.setIdProduto(1);
+//    	produto.setDescricao("CAMISA TESTE1");
+//    	Modelo m = Modelo.MASCULINO;
+//    	produto.setModelo(m);
+//    	TipoTamanho p = TipoTamanho.P;
+//    	produto.setTamanho(p);
+//    	produto.setPreco(29.99);
+//    	lista.add(produto);
+//    	
+//    	p1.setIdProduto(2);
+//    	p1.setDescricao("CAMISA TESTE2");
+//    	Modelo m1 = Modelo.FEMININO;
+//    	p1.setModelo(m1);
+//    	TipoTamanho pp = TipoTamanho.P;
+//    	p1.setTamanho(pp);
+//    	p1.setPreco(49.99);
+//    	lista.add(p1);
     	return lista;
     	
 	}
@@ -116,13 +118,13 @@ public class ProdutoTMB {
 		System.out.println(id);
 		lista.remove(id);
 	}
-	
+	public void mostrar() {
+		System.out.println("A");
+	}
 	public void inserir() {
-		System.err.println("B");
-		if ( this.produto != null ) { 
-			System.err.println("A");
-			lista.add(produto);
-		}
+		System.out.println("a");
+		lista.add(produto);
+		
 	}
 	
 }

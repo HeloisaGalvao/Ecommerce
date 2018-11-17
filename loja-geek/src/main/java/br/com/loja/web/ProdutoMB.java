@@ -16,7 +16,7 @@ import br.com.loja.modelos.Produto;
 @ManagedBean
 @SessionScoped
 public class ProdutoMB {
-
+//    daiene
 	public ProdutoMB() {
 		ProdutoDAO pd = new ProdutoDAO();
 		this.lista = pd.listarProdutos();

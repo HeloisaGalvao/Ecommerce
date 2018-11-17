@@ -1,9 +1,6 @@
 package br.com.loja.dao;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 import br.com.loja.modelos.Categoria;

@@ -8,26 +8,26 @@
 </h:head>
 <h:body>
 <h:form>
-	<h:panelGrid>
-       <h:outputLabel for="idProduto" value="ID"/>
-       <h:inputText id="idProduto" value="#{produtoTMB.idProduto}"/>
-       
-       <h:outputLabel for="descricao" value="Descricao"/>
-       <h:inputText id="descricao" value="#{produtoTMB.descricao}"/>
-       
-       <h:outputLabel for="modelo" value="Modelo"/>
-       <h:inputText id="modelo" value="#{produtoTMB.modelo}"/>
-       
-       <h:outputLabel for="tamanho" value="Tamanho"/>
-       <h:inputText id="tamanho" value="#{produtoTMB.tamanho}"/>
-       
-       <h:outputLabel for="preco" value="Preco"/>
-       <h:inputText id="preco" value="#{produtoTMB.preco}"/>
-       
-       <h:commandButton value="Inserir" action="#{produtoTMB.inserir}" />
-       
-   </h:panelGrid>
-</h:form>
+		<h:panelGrid>
+
+			<h:outputLabel for="idProduto" value="ID" />
+			<h:inputText id="idProduto" value="#{produtoTMB.idProduto}" />
+
+			<h:outputLabel for="descricao" value="Descricao" />
+			<h:inputText id="descricao" value="#{produtoTMB.descricao}" />
+
+			<h:outputLabel for="modelo" value="Modelo" />
+			<h:inputText id="modelo" value="#{produtoTMB.modelo}" />
+
+			<h:outputLabel for="tamanho" value="Tamanho" />
+			<h:inputText id="tamanho" value="#{produtoTMB.tamanho}" />
+
+			<h:outputLabel for="preco" value="Preco" />
+			<h:inputText id="preco" value="#{produtoTMB.preco}" />
+
+			<h:commandButton value="Inserir" action="#{produtoTMB.mostrar}" />
+		</h:panelGrid>
+	</h:form>
 	<h:form>
 		<p:dataTable var="produto" value="#{produtoTMB.lista}">
 		
