@@ -55,11 +55,15 @@
 </h:body>	
 <script>
 $(function(){
-	setTimeout(function(){
-		var jsonTarefa = localStorage.getItem('obj');
-		var tarefa = JSON.parse(jsonTarefa);
-		console.log(tarefa);	
-	},2000);
+	 var getLocalStorage = function(name){
+	        if(localStorage.getItem(name)){
+	            var arrayObject = JSON.parse(localStorage.getItem(name));
+	            for(var i = 0; i &lt; arrayObject.length; i++){
+	                var html = '<div class="item"><h4 class="titulo">'+arrayObject[i].titulo+'</h4><h5 class="preco">'+arrayObject[i].preco+'</h5></div>'            
+	                $('.itens').append(html);
+	            }
+	        }
+	    }
 	
 });
 </script>	
