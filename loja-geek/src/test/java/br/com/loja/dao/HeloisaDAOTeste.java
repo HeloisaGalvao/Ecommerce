@@ -6,7 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
+import br.com.loja.modelos.Categoria;
+import br.com.loja.modelos.Modelo;
 import br.com.loja.modelos.Produto;
+import br.com.loja.modelos.TipoTamanho;
 
 public class HeloisaDAOTeste {
 
@@ -113,23 +116,23 @@ public class HeloisaDAOTeste {
 		}
 	}*/
 
-	/*@Test
+	@Test
 	public void inserirProduto() {
 		Categoria ct = new Categoria();
 		ct.setIdCategoria(1);
 		ct.setNomeCategoria("Moleton");
 		Produto p = new Produto();
-		p.setDescricao("Moleton Music");
+		p.setDescricao("Moleton B");
 		p.setModelo(Modelo.FEMININO);
-		p.setPreco(35);
+		p.setPreco(2);
 		p.setTamanho(TipoTamanho.P);		
 		p.setCategoria(ct);
 		
 		ProdutoDAO pd = new ProdutoDAO();
 		pd.inserir(p);
 		
-		}*/
-	
+		}
+	/*
 	@Test
 	public void listarProdutos() {
 		ProdutoDAO pd = new ProdutoDAO();
@@ -146,5 +149,5 @@ public class HeloisaDAOTeste {
 			
 			
 		}
-	}
+	}*/
 }
