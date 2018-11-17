@@ -56,9 +56,6 @@ public class CarrinhoMB {
     	produto.setTamanho(p);
     	produto.setPreco(29.99);
     	setValor(produto.getPreco());
-    	produto.setQuantidade(1);
-    	//produto.setSubtotal(calcularSubtotal(produto.getPreco(), produto.getQuantidade()));
-    	produto.setSubtotal(getAtualValor());
     	//produto.setSubtotal(29.99);
     	lista.add(produto);
     	
@@ -70,9 +67,7 @@ public class CarrinhoMB {
     	p1.setTamanho(pp);
     	p1.setPreco(49.99);
     	setValor(p1.getPreco());
-    	p1.setQuantidade(1);
     	//p1.setSubtotal(calcularSubtotal(p1.getPreco(), p1.getQuantidade()));
-    	p1.setSubtotal(getAtualValor());
     	//p1.setSubtotal(99.98);
     	lista.add(p1);
     	

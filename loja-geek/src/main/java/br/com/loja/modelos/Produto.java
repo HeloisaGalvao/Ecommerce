@@ -1,6 +1,5 @@
 package br.com.loja.modelos;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,16 +17,12 @@ public class Produto implements EntidadeIN {
 	private int idProduto;
 	private double preco;
 	private String descricao;
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)	
 	private TipoTamanho tamanho;
 	@Enumerated(EnumType.STRING)
 	private Modelo modelo;
 	@ManyToOne
 	private Categoria categoria;
-	@Column(insertable=false)
-	private int quantidade;
-	@Column(insertable=false)
-	private double subtotal;
 
 
 	public Produto(int idProduto, double preco, String descricao, TipoTamanho tamanho, Modelo modelo){
@@ -88,22 +83,6 @@ public class Produto implements EntidadeIN {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
-	
-	public int getQuantidade() {
-		return quantidade;
-	}
-	
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public double getSubtotal() {
-		return subtotal;
-	}
-	
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
 	}
 	
 	@Override

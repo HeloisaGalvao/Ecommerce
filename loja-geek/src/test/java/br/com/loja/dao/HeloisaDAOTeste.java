@@ -1,38 +1,31 @@
 package br.com.loja.dao;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
-import br.com.loja.modelos.Categoria;
-import br.com.loja.modelos.Cliente;
-import br.com.loja.modelos.Estado;
-import br.com.loja.modelos.Estoque;
-import br.com.loja.modelos.FormaDePagamento;
-import br.com.loja.modelos.ItensDoPedido;
-import br.com.loja.modelos.Modelo;
-import br.com.loja.modelos.Pedido;
 import br.com.loja.modelos.Produto;
-import br.com.loja.modelos.TipoDePagamento;
-import br.com.loja.modelos.TipoTamanho;
 
 public class HeloisaDAOTeste {
 
-	@Test
+/*	@Test
 	public void inserirItensDoPedido() {
 		Cliente c = new Cliente();
 		c.setCpf("108.088.034-84");
 		c.setNomeCliente("Heloísa Rayanne Barbosa Galvão");
 		c.setEmail("heloisa0rayane@gmail.com");
-		/*c.setLogin("HeloisaGalvao");*/
+		c.setLogin("HeloisaGalvao");
 		c.setSenha("1234");
 		
 		ClienteDAO cd = new ClienteDAO();
 	    cd.inserir(c);
 
-	/*}
+	}
 	
 	@Test
-	public void inserirCategoria() {*/
+	public void inserirCategoria() {
 		Categoria ct = new Categoria();
 		ct.setNomeCategoria("Moleton");
 		
@@ -58,10 +51,10 @@ public class HeloisaDAOTeste {
 		
 		EstoqueDAO ed = new EstoqueDAO();
 		ed.inserir(e);
-		/*}
+		}
 	
 	@Test
-	public void inserirPedido() {*/
+	public void inserirPedido() {
 		Pedido pedido  = new Pedido();
 		pedido.setCEP("5234-423");
 		pedido.setBairro("Beberibe");
@@ -118,6 +111,40 @@ public class HeloisaDAOTeste {
 
 			ed.alterar(estoque);
 		}
-	}
+	}*/
 
+	/*@Test
+	public void inserirProduto() {
+		Categoria ct = new Categoria();
+		ct.setIdCategoria(1);
+		ct.setNomeCategoria("Moleton");
+		Produto p = new Produto();
+		p.setDescricao("Moleton Music");
+		p.setModelo(Modelo.FEMININO);
+		p.setPreco(35);
+		p.setTamanho(TipoTamanho.P);		
+		p.setCategoria(ct);
+		
+		ProdutoDAO pd = new ProdutoDAO();
+		pd.inserir(p);
+		
+		}*/
+	
+	@Test
+	public void listarProdutos() {
+		ProdutoDAO pd = new ProdutoDAO();
+		List<Produto> lista = new ArrayList<Produto>();
+		lista = pd.listarProdutos();
+		
+		for (Produto produto : lista) {
+			System.out.println(produto.getIdProduto());
+			System.out.println(produto.getDescricao());
+			System.out.println(produto.getPreco());
+			System.out.println(produto.getCategoria());
+			System.out.println(produto.getModelo());
+			System.out.println(produto.getTamanho());
+			
+			
+		}
+	}
 }

@@ -42,15 +42,16 @@
 			<h:panelGrid>
 				<h:outputLabel for="numero" value="Número"/>
 				<p:inputMask id="numero" value="#{pedidoMB.numeroCartao}" required="true" mask="9999 9999 9999 9999"/>
-
+				
 				<h:outputLabel for="nome" value="Nome do Titular"/>
-				<p:inputText id="nome" value="#{pedidoMB.nomeTitular}" required="true" style="text-transform:uppercase"/>
-
+				<p:inputText id="nome" value="#{pedidoMB.nomeTitular}" required="true" style="text-transform:uppercase" 
+				validatorMessage="Nome do titular inválido"/>
+				
 				<h:outputLabel for="validade" value="Validade"/>
-				<p:inputMask id="validade" value="#{pedidoMB.validade}" required="true" mask="99/9999"/>
+				<p:inputMask id="validade" value="#{pedidoMB.validade}" required="true" mask="99/9999" placeholder="02/2022"/>
 				
 				<h:outputLabel for="codigo" value="Código de Segurança"/>
-				<p:inputMask id="codigo" value="#{pedidoMB.codigoSeguranca}" required="true" mask="999" placeholder="?"/>
+				<p:inputMask id="codigo" value="#{pedidoMB.codigoSeguranca}" required="true" mask="999" placeholder="999"/>
 			</h:panelGrid>
 		</p:panel>
 		<br></br>

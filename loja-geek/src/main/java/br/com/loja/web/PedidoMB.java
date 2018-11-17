@@ -206,10 +206,10 @@ public class PedidoMB implements Serializable {
 		System.out.println(nomeTitular);
 		System.out.println(validade);
 		System.out.println(codigoSeguranca);
-	/*	formaDePagamento.setNumeroCartao(numeroCartao);
+		formaDePagamento.setNumeroCartao(numeroCartao);
 		formaDePagamento.setNomeTitular(nomeTitular);
 		formaDePagamento.setValidade(validade);
-		formaDePagamento.setCodigoSeguranca(codigoSeguranca);*/
+		formaDePagamento.setCodigoSeguranca(codigoSeguranca);
 	
 		System.out.println("6");
 		formaDePagamentoDAO.inserir(formaDePagamento);
