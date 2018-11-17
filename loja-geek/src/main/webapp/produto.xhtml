@@ -33,7 +33,7 @@
 			
 		<p:column headerText="Remover">
 			     <p:commandLink id="ajax" 
-					action="#{produtoMB.removerItem(prd)}">
+					action="#{produtoMB.removerItem(prd) }" update="@form">
 					<h:outputText value="Remover" />
 				</p:commandLink>
 		</p:column>

@@ -1,10 +1,12 @@
 package br.com.loja.web;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import br.com.loja.dao.ProdutoDAO;
 import br.com.loja.modelos.Produto;
@@ -12,7 +14,7 @@ import br.com.loja.modelos.Produto;
 @ManagedBean
 @SessionScoped
 public class ProdutoMB {
-//    daiene (linda)
+
 	
 	public ProdutoMB() {
 		ProdutoDAO pd = new ProdutoDAO();
@@ -47,13 +49,11 @@ public class ProdutoMB {
 		this.lista = lista;
 	}
 	
-	public void removerItem(Produto produto) {
-	/*	System.out.println("achou");
-		lista.remove(id);
-		System.out.println("removeu");*/
+	public void removerItem(Produto produto) throws IOException {
+		System.out.println("removeu");
 		ProdutoDAO pd = new ProdutoDAO();
 		pd.excluirPorObjeto(produto);
-		this.lista = new ArrayList<Produto>();
+		FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
 		
 	}
 
