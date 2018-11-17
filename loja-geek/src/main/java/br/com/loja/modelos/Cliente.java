@@ -12,7 +12,6 @@ public class Cliente implements EntidadeIN  {
 	
 	private String nomeCliente;	
 	private String email;
-	private String login;
 	private String senha;
 	@Id
 	@Column(name="CpfCliente", length=11)
@@ -23,10 +22,9 @@ public class Cliente implements EntidadeIN  {
 		
 	}
 	
-	public Cliente(String nomeCliente, String email, String login, String senha, String cpf) {
+	public Cliente(String nomeCliente, String email, String senha, String cpf) {
 		this.nomeCliente = nomeCliente;
 		this.email = email;
-		this.login = login;
 		this.senha = senha;
 		this.cpf = cpf;
 	}
@@ -47,13 +45,6 @@ public class Cliente implements EntidadeIN  {
 		this.email = email;
 	}
 	
-	public String getLogin() {
-		return login;
-	}
-	
-	public void setLogin(String login) {
-		this.login = login;
-	}
 	
 	public String getSenha() {
 		return senha;

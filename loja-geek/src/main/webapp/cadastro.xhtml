@@ -13,20 +13,23 @@
 		
 		<h:panelGrid >
             <h:outputLabel for="name" value="Name Sobrenome"/>
-            <p:inputText id="name" value="#{clienteMB.nomeCliente}" required="true" placeholder="Nome e Sobrenome"/>
+            <p:inputText id="name" value="#{clienteMB.nomeCliente}" required="true" placeholder="Nome e Sobrenome" validatorMessage="Tamanho invalido">
+            <c:validateLength minimum="3" />
+            </p:inputText>
                
             <h:outputLabel for="cpf" value="CPF" />
             <p:inputMask id="cpf" value="#{clienteMB.cpf}" required="true"
              mask="999.999.999-99" placeholder="Informe seu CPF"/>
  
             <h:outputLabel for="email" value="E-mail" />
-            <p:inputText id="email" value="#{clienteMB.email}" required="true" placeholder="exemplo@email.com"/>
-            
-            <h:outputLabel for="login" value="Login" />
-            <p:inputText id="login" value="#{clienteMB.login}" required="true" placeholder="Informe seu Login" />
+            <p:inputText id="email" value="#{clienteMB.email}" required="true" placeholder="exemplo@email.com" validatorMessage="E-mail invalido">
+            <c:validateRegex pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$"/>
+            </p:inputText>
             
             <h:outputLabel for="senha" value="Senha" />
-            <p:inputText type="password" id="senha" value="#{clienteMB.senha}" required="true" placeholder="Digite sua senha"/>
+            <p:inputText type="password" id="senha" value="#{clienteMB.senha}" required="true" placeholder="Digite sua senha" validatorMessage="Sua senha não contem 6 digitos">
+            <c:validateLength minimum="6" />
+            </p:inputText>
             
             <p:commandButton value="Cadastrar" action="#{clienteMB.save}" update="@form" />
             <p:commandButton value="Cancelar" ajax="true" immediate="true" type="reset" />

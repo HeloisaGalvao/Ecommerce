@@ -23,7 +23,7 @@ public class HeloisaDAOTeste {
 		c.setCpf("108.088.034-84");
 		c.setNomeCliente("Heloísa Rayanne Barbosa Galvão");
 		c.setEmail("heloisa0rayane@gmail.com");
-		c.setLogin("HeloisaGalvao");
+		/*c.setLogin("HeloisaGalvao");*/
 		c.setSenha("1234");
 		
 		ClienteDAO cd = new ClienteDAO();

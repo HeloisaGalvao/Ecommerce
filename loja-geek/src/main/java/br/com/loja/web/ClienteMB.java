@@ -18,7 +18,7 @@ import br.com.loja.regras.ValidarCPF;
 public class ClienteMB implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	public String re_senha, nomeCliente, cpf, senha, login, email;
+	public String re_senha, nomeCliente, cpf, senha, email;
 	private Cliente cliente;
 	
 	public ClienteMB() {
@@ -66,14 +66,6 @@ public class ClienteMB implements Serializable {
 		this.senha = senha;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -91,47 +83,41 @@ public class ClienteMB implements Serializable {
 	
 	public void save() throws IOException {
 		ClienteDAO clienteDAO = new ClienteDAO();
-		
+
 		String CPFMask = cpf.replaceAll("\\D", "");
-		
-		//Validar CPF
-		if(ValidarCPF.isCPF(CPFMask)==true) {
+
+		//Validar se CPF é valido
+		if(ValidarCPF.isCPF(CPFMask)==true){
 			
-			//Verficar se o login esta disponivel
-			List<Cliente> existe = clienteDAO.getLogin(login);
-			if(existe.isEmpty() ) {
-			
-				//Valdiar se cliente ja esta cadastrado
-				EntidadeIN validaCliente = clienteDAO.consultarPorChavePrimaria(Cliente.class, CPFMask);
-				if (validaCliente == null){
-					
+			//validar se o cpf ja esta cadastrado
+			EntidadeIN validaCliente = clienteDAO.consultarPorChavePrimaria(Cliente.class, CPFMask);
+			if(validaCliente == null){
+				
+				//valdiar se e-mail ja esta cadastrado
+				List<Cliente> existe = clienteDAO.getEmailVerifica(email);
+				if(existe.isEmpty()) {
 					Cliente cliente = new Cliente();
 					cliente.setNomeCliente(nomeCliente);
 					cliente.setEmail(email);
-					cliente.setLogin(login);
 					cliente.setSenha(senha);
 					cliente.setCpf(CPFMask);
-					
+
 					clienteDAO.inserir(cliente);
-					
+
 					FacesContext context = FacesContext.getCurrentInstance();
-			        context.addMessage(null, new FacesMessage("Successful",  "Seja bem vindo(a) " + cliente.getNomeCliente())); 
-			        
-			        //FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
-			       
-				}else {
-					FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Cliente ja cadstrado",null);
+					context.addMessage(null, new FacesMessage("Successful",  "Seja bem vindo(a) " + cliente.getNomeCliente()));
+
+				}else{
+					FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"E-mail ja cadastrado",null);
 					FacesContext.getCurrentInstance().addMessage(null, msg);
 				}
-				
-			}else {
-				FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"Login não disponivel",null);
+			}else{
+				FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Cliente ja cadstrado",null);
 				FacesContext.getCurrentInstance().addMessage(null, msg);
 			}
-							
-		}else {
+		}else{
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"CPF invalido",null);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 		}
-	}	
+	}
 } 

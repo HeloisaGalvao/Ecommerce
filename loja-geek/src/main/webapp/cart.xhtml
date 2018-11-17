@@ -8,8 +8,14 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:dataTable var="carrinho" value="#{carrinhoMB.lista}"
-			rowIndexVar="rowIndex">
+		<p:dataTable id="table" var="carrinho" value="#{carrinhoMB.lista}"
+			rowIndexVar="rowIndex" rowKey="#{carrinho.idProduto}">
+<!-- 			Coluna id para teste -->
+			
+			<p:column headerText="ID">
+				<h:outputText value="#{carrinho.idProduto}" />
+			</p:column>
+			
 			<p:column headerText="Descricao">
 				<h:outputText value="#{carrinho.descricao}" />
 			</p:column>
@@ -33,8 +39,8 @@
 
 			<p:column headerText="Remover">
 			     <p:commandLink id="ajax" 
-					action="#{carrinhoMB.removerItem(rowIndex)}" update="@form" style="margin-right:20px;">
-					<f:param name="id" value="#{rowIndex}" />
+					action="#{carrinhoMB.removerItemT(carrinho.idProduto)}">
+					<f:param name="id" value="#{produto.idProduto}" />
 					<h:outputText value="Remover" />
 				</p:commandLink>
 			</p:column>

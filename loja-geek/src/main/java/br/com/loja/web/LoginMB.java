@@ -11,7 +11,7 @@ import br.com.loja.modelos.Cliente;
 
 @ManagedBean
 public class LoginMB {
-	private String login , senha ;
+	private String email , senha ;
 	private Cliente cliente;
 	
 	public void LoginBM() {
@@ -20,12 +20,12 @@ public class LoginMB {
 		}
 	}
 	
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {
@@ -35,18 +35,16 @@ public class LoginMB {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
 	public void cadastrar() {
-		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("cadastro.xhtml");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 	}
+	
 	public void logar() throws IOException {
 		ClienteDAO clienteDAO = new ClienteDAO();
-		Cliente existe = clienteDAO.getLoginSenha(login, senha);
+		Cliente existe = clienteDAO.getEntrar(email, senha);
 		
-		if(existe.getLogin().equals(login) && existe.getSenha().equals(senha)) {
+		if(existe.getEmail().equals(email) && existe.getSenha().equals(senha)) {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
 		}else {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"login ou senha invalido",null);
