@@ -15,8 +15,6 @@ public class Carrinho implements EntidadeIN{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idCarrinho;
-	private int qtdItens;
-	private int qtdProduto;
 	private double valorTotal;
 	@OneToMany
 	private List <Produto> produto;
@@ -28,20 +26,11 @@ public class Carrinho implements EntidadeIN{
 		
 	}
 	
-	public Carrinho(int idCarrinho, int qtdItens, double valorTotal, int qtdProduto) {
+	public Carrinho(int idCarrinho, double valorTotal) {
 		this.idCarrinho = idCarrinho;
-		this.qtdItens = qtdItens;
 		this.valorTotal = valorTotal;
-		this.qtdProduto = qtdProduto;
 	}
 
-	public int getQtdProduto() {
-		return qtdProduto;
-	}
-
-	public void setQtdProduto(int qtdProduto) {
-		this.qtdProduto = qtdProduto;
-	}
 
 	public int getIdCarrinho() {
 		return idCarrinho;
@@ -51,13 +40,6 @@ public class Carrinho implements EntidadeIN{
 		this.idCarrinho = idCarrinho;
 	}
 
-	public int getQtdItens() {
-		return qtdItens;
-	}
-
-	public void setQtdItens(int qtdItens) {
-		this.qtdItens = qtdItens;
-	}
 
 	public double getValorTotal() {
 		return valorTotal;
