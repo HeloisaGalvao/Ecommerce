@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import br.com.loja.interfaces.EntidadeIN;
 
@@ -23,6 +24,8 @@ public class Produto implements EntidadeIN {
 	private Modelo modelo;
 	@ManyToOne
 	private Categoria categoria;
+	@Transient
+	private int quantidade;
 
 
 	public Produto(int idProduto, double preco, String descricao, TipoTamanho tamanho, Modelo modelo){
@@ -85,6 +88,14 @@ public class Produto implements EntidadeIN {
 		this.categoria = categoria;
 	}
 	
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	@Override
 	public Object getChavePrimaria() {
 		return getIdProduto();

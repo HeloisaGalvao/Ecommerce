@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -15,7 +16,9 @@ import br.com.loja.modelos.Produto;
 @SessionScoped
 public class ProdutoMB {
 
-	
+	Produto produto = new Produto();
+	private List<Produto> lista = new ArrayList<Produto>();
+	private double total;
 	public ProdutoMB() {
 		ProdutoDAO pd = new ProdutoDAO();
 		this.lista = pd.listarProdutos();
@@ -29,8 +32,12 @@ public class ProdutoMB {
 			System.out.println(produto.getTamanho());
 		}*/
 	}
-	Produto produto = new Produto();
-	private List<Produto> lista = new ArrayList<Produto>();
+	@PostConstruct
+	public void init() {
+		for (Produto produto : lista) {
+			this.total += (produto.getPreco() * produto.getQuantidade());
+		}
+	}
 
 	public Produto getProduto() {
 		return produto;
@@ -49,6 +56,10 @@ public class ProdutoMB {
 		this.lista = lista;
 	}
 	
+	public double getTotal() {
+		return total;
+	}
+
 	public void removerItem(Produto produto) throws IOException {
 		System.out.println("removeu");
 		ProdutoDAO pd = new ProdutoDAO();
@@ -57,4 +68,11 @@ public class ProdutoMB {
 		
 	}
 
+	public void totalizar() {
+		for (Produto produto : lista) {
+			this.total += produto.getPreco() * produto.getQuantidade();
+		}
+		System.out.println("contou");
+		System.out.println(this.total);
+	}
 }

@@ -27,17 +27,31 @@
 			<h:outputText value="#{prd.tamanho}" />
 		</p:column>
 		
+		<p:column headerText="Quantidade"> 
+			<p:inputText id="quantidade" value="#{prd.quantidade}"/>		
+		</p:column>
+		
 		<p:column headerText="Preco"> 
 			<h:outputText value="#{prd.preco}" />
 		</p:column>
 			
 		<p:column headerText="Remover">
 			     <p:commandLink id="ajax" 
-					action="#{produtoMB.removerItem(prd) }" update="@form">
+					action="#{produtoMB.removerItem(prd)}" update="@form">
 					<h:outputText value="Remover" />
 				</p:commandLink>
 		</p:column>
 		</p:dataTable>
+	</h:form>
+	<h:form>
+		<h:panelGrid>
+		<br></br>
+			<p:commandButton value="Totalizar" action="#{produtoMB.totalizar}" update="@form" />
+			<h:outputLabel for="total" value="Total"/>
+			<h:outputText value="#{produtoMB.total}"> 
+				<c:convertNumber currencySymbol="R$" type="currency" />
+			</h:outputText>
+		</h:panelGrid>
 	</h:form>
 </h:body>		
 </html>

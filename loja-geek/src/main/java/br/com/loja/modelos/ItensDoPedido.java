@@ -16,7 +16,7 @@ public class ItensDoPedido implements EntidadeIN {
 	private int idItensDoPedido;
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Pedido idPedido;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	private Produto idProduto;
 	private int quantidade;
 	

@@ -4,19 +4,25 @@ package br.com.loja.dao;
 import org.junit.Test;
 
 import br.com.loja.modelos.Categoria;
+import br.com.loja.modelos.Cliente;
+import br.com.loja.modelos.Estado;
+import br.com.loja.modelos.Estoque;
+import br.com.loja.modelos.FormaDePagamento;
+import br.com.loja.modelos.ItensDoPedido;
 import br.com.loja.modelos.Modelo;
+import br.com.loja.modelos.Pedido;
 import br.com.loja.modelos.Produto;
+import br.com.loja.modelos.TipoDePagamento;
 import br.com.loja.modelos.TipoTamanho;
 
 public class HeloisaDAOTeste {
 
-/*	@Test
+	/*@Test
 	public void inserirItensDoPedido() {
 		Cliente c = new Cliente();
-		c.setCpf("108.088.034-84");
+		c.setCpf("10808803484");
 		c.setNomeCliente("Heloísa Rayanne Barbosa Galvão");
 		c.setEmail("heloisa0rayane@gmail.com");
-		c.setLogin("HeloisaGalvao");
 		c.setSenha("1234");
 		
 		ClienteDAO cd = new ClienteDAO();
@@ -115,13 +121,12 @@ public class HeloisaDAOTeste {
 
 	@Test
 	public void inserirProduto() {
+		Produto p = new Produto();
 		Categoria ct = new Categoria();
 		ct.setIdCategoria(1);
-		ct.setNomeCategoria("Moleton");
-		Produto p = new Produto();
-		p.setDescricao("Moleton B");
+		p.setDescricao("Moleton de Star Wars3");
 		p.setModelo(Modelo.FEMININO);
-		p.setPreco(2);
+		p.setPreco(1);
 		p.setTamanho(TipoTamanho.P);		
 		p.setCategoria(ct);
 		
