@@ -4,15 +4,8 @@ package br.com.loja.dao;
 import org.junit.Test;
 
 import br.com.loja.modelos.Categoria;
-import br.com.loja.modelos.Cliente;
-import br.com.loja.modelos.Estado;
-import br.com.loja.modelos.Estoque;
-import br.com.loja.modelos.FormaDePagamento;
-import br.com.loja.modelos.ItensDoPedido;
 import br.com.loja.modelos.Modelo;
-import br.com.loja.modelos.Pedido;
 import br.com.loja.modelos.Produto;
-import br.com.loja.modelos.TipoDePagamento;
 import br.com.loja.modelos.TipoTamanho;
 
 public class HeloisaDAOTeste {

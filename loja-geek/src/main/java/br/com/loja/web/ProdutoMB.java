@@ -1,6 +1,7 @@
 package br.com.loja.web;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,23 +15,21 @@ import br.com.loja.modelos.Produto;
 
 @ManagedBean
 @SessionScoped
-public class ProdutoMB {
+public class ProdutoMB implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Produto produto = new Produto();
 	private List<Produto> lista = new ArrayList<Produto>();
 	private double total;
+	private int quantidade = 1;
+	
 	public ProdutoMB() {
 		ProdutoDAO pd = new ProdutoDAO();
 		this.lista = pd.listarProdutos();
 		System.out.println("listou");
-		/*
-		for (Produto produto : lista) {
-			System.out.println(produto.getIdProduto());
-			System.out.println(produto.getDescricao());
-			System.out.println(produto.getPreco());
-			System.out.println(produto.getModelo());
-			System.out.println(produto.getTamanho());
-		}*/
 	}
 	@PostConstruct
 	public void init() {
@@ -38,7 +37,14 @@ public class ProdutoMB {
 			this.total += (produto.getPreco() * produto.getQuantidade());
 		}
 	}
-
+	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	
+	public void setTotal(double total) {
+		this.total = total;
+	}
 	public Produto getProduto() {
 		return produto;
 	}
@@ -51,7 +57,13 @@ public class ProdutoMB {
 		return lista;
 
 	}
-
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 	public void setLista(List<Produto> lista) {
 		this.lista = lista;
 	}
@@ -67,11 +79,30 @@ public class ProdutoMB {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
 		
 	}
+	
+	public void quantidadeADD() {
+		if(quantidade > 0) {
+			quantidade = quantidade + 1;
+		}
+		
+		System.out.println("contou" + quantidade);
+	}
+	
+	public void quantidadeREM() {
+		if(quantidade > 1) {
+			quantidade = quantidade - 1;
+		}
+		
+		System.out.println("contou" + quantidade);
+	}
+	
 
 	public void totalizar() {
+	
 		for (Produto produto : lista) {
-			this.total += produto.getPreco() * produto.getQuantidade();
+			total =+ produto.getPreco();
 		}
+		
 		System.out.println("contou");
 		System.out.println(this.total);
 	}

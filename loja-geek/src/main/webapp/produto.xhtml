@@ -10,48 +10,55 @@
 	<h:form>
 	<br></br>
 		<p:dataTable var="prd" value="#{produtoMB.lista}" border="1">
-		
-		<p:column headerText="ID"> 
-			<h:outputText value="#{prd.idProduto}" />
-		</p:column>
-		
-		<p:column headerText="Descricao"> 
-			<h:outputText value="#{prd.descricao}" />
-		</p:column>	
-		
-		<p:column headerText="Modelo"> 
-			<h:outputText value="#{prd.modelo}" />
-		</p:column>	
-		
-		<p:column headerText="Tamanho"> 
-			<h:outputText value="#{prd.tamanho}" />
-		</p:column>
-		
-		<p:column headerText="Quantidade"> 
-			<p:inputText id="quantidade" value="#{prd.quantidade}"/>		
-		</p:column>
-		
-		<p:column headerText="Preco"> 
-			<h:outputText value="#{prd.preco}" />
-		</p:column>
-			
-		<p:column headerText="Remover">
-			     <p:commandLink id="ajax" 
-					action="#{produtoMB.removerItem(prd)}" update="@form">
+
+			<p:column headerText="Descricao" style="width:200px">
+				<h:outputText value="#{prd.descricao}" />
+			</p:column>
+
+			<p:column headerText="Modelo" style="width:70px">
+				<h:outputText value="#{prd.modelo}" />
+			</p:column>
+
+			<p:column headerText="Tamanho" style="width:70px">
+				<h:outputText value="#{prd.tamanho}" />
+			</p:column>
+
+<!-- 			<p:column headerText="Quantidade " style="width:150px"> -->
+<!-- 				<p:commandButton value="+1" action="#{produtoMB.quantidadeADD}" update="qtd" /> -->
+				
+<!-- 				<p:commandButton  value="-1" action="#{produtoMB.quantidadeREM}" update="qtd"/> -->
+<!-- 				<h:outputText id="qtd" value="#{produtoMB.quantidade}" style="padding-left: 10px" /> -->
+<!-- 			</p:column> -->
+
+
+			<p:column headerText="Preco" style="width:70px" update="qtd">
+				<h:outputText value="#{prd.preco}" />
+			</p:column>
+
+			<p:column headerText="Remover" style="width:70px">
+				<p:commandLink id="ajax" action="#{produtoMB.removerItem(prd)}"
+					update="@form">
 					<h:outputText value="Remover" />
 				</p:commandLink>
-		</p:column>
+			</p:column>
+			
 		</p:dataTable>
 	</h:form>
+
 	<h:form>
-		<h:panelGrid>
-		<br></br>
-			<p:commandButton value="Totalizar" action="#{produtoMB.totalizar}" update="@form" />
-			<h:outputLabel for="total" value="Total"/>
-			<h:outputText value="#{produtoMB.total}"> 
-				<c:convertNumber currencySymbol="R$" type="currency" />
-			</h:outputText>
-		</h:panelGrid>
+		<p:panel id="compra" header="Informações da compra">
+			<h:panelGrid>
+			
+				<br></br>
+				<p:commandButton value="Totalizar" action="#{produtoMB.totalizar}" update="@form" />
+				<h:outputLabel for="total" value="Total" />
+				<h:outputText value="#{produtoMB.total}">
+					<c:convertNumber currencySymbol="R$" type="currency" />
+				</h:outputText>
+			</h:panelGrid>
+			
+		</p:panel>
 	</h:form>
+
 </h:body>		
 </html>
