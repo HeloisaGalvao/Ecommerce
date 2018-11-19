@@ -1,16 +1,9 @@
 package br.com.loja.dao;
 
-
-import org.junit.Test;
-
-import br.com.loja.modelos.Categoria;
-import br.com.loja.modelos.Modelo;
-import br.com.loja.modelos.Produto;
-import br.com.loja.modelos.TipoTamanho;
-
 public class HeloisaDAOTeste {
 
-	/*@Test
+	/*@Ignore
+	@Test
 	public void inserirItensDoPedido() {
 		Cliente c = new Cliente();
 		c.setCpf("10808803484");
@@ -20,11 +13,10 @@ public class HeloisaDAOTeste {
 		
 		ClienteDAO cd = new ClienteDAO();
 	    cd.inserir(c);
-
-	    }
-	
-	@Test
-	public void inserirCategoria() {
+//	    }
+//	
+//	@Test
+//	public void inserirCategoria() {
 		Categoria ct = new Categoria();
 		ct.setNomeCategoria("Moleton");
 		
@@ -50,10 +42,10 @@ public class HeloisaDAOTeste {
 		
 		EstoqueDAO ed = new EstoqueDAO();
 		ed.inserir(e);
-		}
-	
-	@Test
-	public void inserirPedido() {
+//		}
+//	
+//	@Test
+//	public void inserirPedido() {
 		Pedido pedido  = new Pedido();
 		pedido.setCEP("5234-423");
 		pedido.setBairro("Beberibe");
@@ -65,7 +57,6 @@ public class HeloisaDAOTeste {
 		pedido.setCliente(c);
 		
 		FormaDePagamento fdp = new FormaDePagamento();
-		fdp.setTipoDePagamento(TipoDePagamento.BOLETO);
 		
 		FormaDePagamentoDAO fdpd = new FormaDePagamentoDAO();
 		fdpd.inserir(fdp);
@@ -107,11 +98,10 @@ public class HeloisaDAOTeste {
 			System.out.println("estoque insuficiente");
 		else {
 			estoque.setQuantidade(estoque.getQuantidade() - itens.getQuantidade());
-
 			ed.alterar(estoque);
 		}
 	}*/
-
+/*
 	@Test
 	public void inserirProduto() {
 		Produto p = new Produto();
@@ -126,7 +116,7 @@ public class HeloisaDAOTeste {
 		ProdutoDAO pd = new ProdutoDAO();
 		pd.inserir(p);
 		
-		}
+		}*/
 	/*
 	@Test
 	public void listarProdutos() {
@@ -164,4 +154,28 @@ public class HeloisaDAOTeste {
 		
 		cd.inserir(cart);
 		}*/
+	/*@Test
+	public void inseriritens() {
+		Cliente c = new Cliente();
+		Produto p = new Produto();
+		p.setIdProduto(2);
+		
+		c.setCpf("10808803484");
+		Pedido pedido  = new Pedido();
+		//buscar idvenda
+		pedido.setCEP("5234-423");
+		pedido.setBairro("Beberibe");
+		pedido.setCidade("Recife");
+		pedido.setComplemento("Próximo ao posto de saúde");
+		pedido.setEstado(Estado.PE);
+		pedido.setLogradouro("Beco da vitória");
+		pedido.setNumero("377");
+		pedido.setCliente(c);
+		ItensDoPedido itens = new ItensDoPedido();
+		itens.setIdPedido(pedido);
+		itens.setIdProduto(p);
+		itens.setQuantidade(2);
+		ItensDoPedidoDAO ipd = new ItensDoPedidoDAO();
+		ipd.alterar(itens);
+	}*/
 }

@@ -14,7 +14,7 @@ public class ItensDoPedido implements EntidadeIN {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idItensDoPedido;
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Pedido idPedido;
 	@ManyToOne
 	private Produto idProduto;
