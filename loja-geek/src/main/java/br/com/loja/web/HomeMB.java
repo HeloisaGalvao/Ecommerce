@@ -1,36 +1,46 @@
 package br.com.loja.web;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.loja.dao.CarrinhoDAO;
 import br.com.loja.dao.ProdutoDAO;
 import br.com.loja.modelos.Carrinho;
+import br.com.loja.modelos.Cliente;
 import br.com.loja.modelos.Produto;
 
 @ManagedBean
 @SessionScoped
 public class HomeMB {
-	
+
 	Carrinho carrinho = new Carrinho();
-	Produto produto = new Produto();
+	CarrinhoDAO cart = new CarrinhoDAO();
+	ProdutoDAO pd = new ProdutoDAO();
 	private List<Produto> lista = new ArrayList<Produto>();
-	private double valorTotal;
-	private int id;
-	
+	private static List<Produto> listaProdutosCart = new ArrayList<Produto>();
+	private static double valorTotal;
+	private static int quantidade = 0;
+
 	public HomeMB(){
-		ProdutoDAO pd = new ProdutoDAO();
-		this.lista = pd.listarProdutos();
+		if (this.lista.isEmpty())
+			this.lista = pd.listarProdutos();
 	}
-	
+
 	public void add(Produto produto) {
-		lista.add(produto);
-		CarrinhoDAO dao = new CarrinhoDAO();
-		dao.inserir(produto);
+		/*for (Produto prd : listaProdutosCart) {
+			if(prd.getIdProduto() = produto.getIdProduto)
+				
+		} */
 		
+		HomeMB.valorTotal += produto.getPreco();
+		increment();
+		listaProdutosCart.add(produto);
+		System.out.println(valorTotal);
 	}
 
 	public Carrinho getCarrinho() {
@@ -40,14 +50,6 @@ public class HomeMB {
 	public void setCarrinho(Carrinho carrinho) {
 		this.carrinho = carrinho;
 		System.out.println("b");
-	}
-	
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
 	}
 
 	public List<Produto> getLista() {
@@ -63,15 +65,47 @@ public class HomeMB {
 	}
 
 	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-	
-	public int getId() {
-		return id;
+		HomeMB.valorTotal = valorTotal;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public List<Produto> getListaProdutosCart() {
+		return listaProdutosCart;
 	}
 
+	public void setListaProdutosCart(List<Produto> listaProdutosCart) {
+		HomeMB.listaProdutosCart = listaProdutosCart;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		HomeMB.quantidade = quantidade;
+	}
+
+	public void carrinho() throws IOException {
+		System.out.println("chegou");
+
+		if (listaProdutosCart.isEmpty()) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
+		}else {
+			String cpf = LoginMB.getClienteLogado();
+			System.out.println(cpf);
+			Cliente cli = new Cliente();
+			cli.setCpf(cpf);
+
+			carrinho.setCliente(cli);
+			carrinho.setValorTotal(HomeMB.valorTotal);
+			carrinho.setProduto(listaProdutosCart);
+
+			cart.inserir(carrinho);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
+		}
+
+	}
+	public void increment() {
+		System.out.println(quantidade);
+		quantidade++;
+	}
 }

@@ -13,6 +13,7 @@ import br.com.loja.modelos.Cliente;
 public class LoginMB {
 	private String email , senha ;
 	private Cliente cliente;
+	private static String clienteLogado;
 	
 	public void LoginBM() {
 		if (this.cliente == null) {
@@ -36,6 +37,14 @@ public class LoginMB {
 		this.senha = senha;
 	}
 	
+	public static String getClienteLogado() {
+		return clienteLogado;
+	}
+
+	public static void setClienteLogado(String clienteLogado) {
+		LoginMB.clienteLogado = clienteLogado;
+	}
+
 	public void cadastrar() {
 		
 	}
@@ -45,6 +54,7 @@ public class LoginMB {
 		Cliente existe = clienteDAO.getEntrar(email, senha);
 		
 		if(existe.getEmail().equals(email) && existe.getSenha().equals(senha)) {
+			LoginMB.clienteLogado = existe.getCpf();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
 		}else {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"login ou senha invalido",null);

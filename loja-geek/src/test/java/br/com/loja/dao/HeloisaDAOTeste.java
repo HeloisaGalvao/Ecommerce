@@ -16,12 +16,12 @@ public class HeloisaDAOTeste {
 		c.setCpf("10808803484");
 		c.setNomeCliente("Heloísa Rayanne Barbosa Galvão");
 		c.setEmail("heloisa0rayane@gmail.com");
-		c.setSenha("1234");
+		c.setSenha("123456");
 		
 		ClienteDAO cd = new ClienteDAO();
 	    cd.inserir(c);
 
-	}
+	    }
 	
 	@Test
 	public void inserirCategoria() {
@@ -37,7 +37,7 @@ public class HeloisaDAOTeste {
 		Produto p = new Produto();
 		p.setDescricao("Moleton de Star Wars");
 		p.setModelo(Modelo.FEMININO);
-	
+		p.setPreco(39.90);
 		p.setTamanho(TipoTamanho.P);		
 		p.setCategoria(ct);
 		
@@ -84,9 +84,9 @@ public class HeloisaDAOTeste {
 		
 		
 		
-	}
+	}*/
 	
-	@Test
+/*	@Test
 	public void atualizarEstoque() {
 		//-- parâmetros considerados --
 		Produto p = new Produto();
@@ -117,10 +117,10 @@ public class HeloisaDAOTeste {
 		Produto p = new Produto();
 		Categoria ct = new Categoria();
 		ct.setIdCategoria(1);
-		p.setDescricao("Moleton de Star Wars3");
+		p.setDescricao("Moleton de Star Wars2");
 		p.setModelo(Modelo.FEMININO);
-		p.setPreco(1);
-		p.setTamanho(TipoTamanho.P);		
+		p.setPreco(29.50);
+		p.setTamanho(TipoTamanho.M);		
 		p.setCategoria(ct);
 		
 		ProdutoDAO pd = new ProdutoDAO();
@@ -145,4 +145,23 @@ public class HeloisaDAOTeste {
 			
 		}
 	}*/
+	
+	/*@Test
+	public void inserirCarrinho() {
+		Carrinho cart = new Carrinho();
+		CarrinhoDAO cd = new CarrinhoDAO();
+		ProdutoDAO pd = new ProdutoDAO();
+		
+		Cliente cli = new Cliente();
+		cli.setCpf("10808803484");
+		
+		List <Produto> prd = new ArrayList<Produto>();
+		prd = pd.listarProdutos();
+		
+		cart.setCliente(cli);
+		cart.setValorTotal(3);
+		cart.setProduto(prd);
+		
+		cd.inserir(cart);
+		}*/
 }
