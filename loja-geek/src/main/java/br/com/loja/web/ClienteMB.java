@@ -78,7 +78,7 @@ public class ClienteMB implements Serializable {
 		return "index.xhtml?faces-redirect=true";
 	}
 	public void cadastra() throws IOException {
-		 FacesContext.getCurrentInstance().getExternalContext().redirect("./view/Cadastro.xhtml");
+		 FacesContext.getCurrentInstance().getExternalContext().redirect("cadastro.xhtml");
 	}
 	
 	public void save() throws IOException {

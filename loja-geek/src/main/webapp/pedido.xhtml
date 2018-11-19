@@ -12,26 +12,60 @@
 		<p:panel id="pedido" header="Dados do Endereço">
 
 			<h:panelGrid>
-				<h:outputLabel for="cep" value="CEP"/>
-				<p:inputMask id="cep" value="#{pedidoMB.CEP}" required="true" mask="99999-999"/>
+				<h:outputLabel for="cep" value="CEP" />
+				<p:inputMask id="cep" value="#{pedidoMB.CEP}" required="true"
+					mask="99999-999" />
 
-				<h:outputLabel for="rua" value="Rua"/>
-				<p:inputText id="rua" value="#{pedidoMB.logradouro}"/>
+				<h:outputLabel for="rua" value="Rua" />
+				<p:inputText id="rua" value="#{pedidoMB.logradouro}" />
 
-				<h:outputLabel for="numero" value="Número"/>
-				<p:inputText id="numero" value="#{pedidoMB.numero}"/>
+				<h:outputLabel for="numero" value="Número" />
+				<p:inputText id="numero" value="#{pedidoMB.numero}" />
 
-				<h:outputLabel for="complemento" value="Complemento"/>
-				<p:inputText id="complemento" value="#{pedidoMB.complemento}" placeholder="Opcional"/>
+				<h:outputLabel for="complemento" value="Complemento" />
+				<p:inputText id="complemento" value="#{pedidoMB.complemento}"
+					placeholder="Opcional" />
 
-				<h:outputLabel for="bairro" value="Bairro"/>
-				<p:inputText id="bairro" value="#{pedidoMB.bairro}"/>
+				<h:outputLabel for="bairro" value="Bairro" />
+				<p:inputText id="bairro" value="#{pedidoMB.bairro}" />
 
-				<h:outputLabel for="cidade" value="Cidade"/>
-				<p:inputText id="cidade" value="#{pedidoMB.cidade}"/>
+				<h:outputLabel for="cidade" value="Cidade" />
+				<p:inputText id="cidade" value="#{pedidoMB.cidade}" />
 
-				<h:outputLabel for="estado" value="Estado"/>
-				<p:inputText id="estado" value="#{pedidoMB.estado}" placeholder="UF"/>
+<!-- 				<h:outputLabel for="estado" value="Estado" /> -->
+<!-- 				<p:inputText id="estado" value="#{pedidoMB.estado}" placeholder="UF" /> -->
+
+				<p:outputLabel for="estado" value="UF:" />
+				<p:selectOneMenu id="estado" value="#{pedidoMB.estado}"
+					style="width:125px">
+				<c:selectItem itemLabel="AC" itemValue="AC"/>
+					<c:selectItem itemLabel="AL" itemValue="AL" />
+					<c:selectItem itemLabel="AP" itemValue="AP" />
+					<c:selectItem itemLabel="AM" itemValue="AM" />
+					<c:selectItem itemLabel="BA" itemValue="BA" />
+					<c:selectItem itemLabel="CE" itemValue="CE" />
+					<c:selectItem itemLabel="DF" itemValue="DF" />
+					<c:selectItem itemLabel="ES" itemValue="ES" />
+					<c:selectItem itemLabel="GO" itemValue="GO" />
+					<c:selectItem itemLabel="MA" itemValue="MA" />
+					<c:selectItem itemLabel="MT" itemValue="MT" />
+					<c:selectItem itemLabel="MS" itemValue="MS" />
+					<c:selectItem itemLabel="MG" itemValue="MG" />
+					<c:selectItem itemLabel="PA" itemValue="PA" />
+					<c:selectItem itemLabel="PB" itemValue="PB" />
+					<c:selectItem itemLabel="PR" itemValue="PR" />
+					<c:selectItem itemLabel="PE" itemValue="PE" />
+					<c:selectItem itemLabel="PI" itemValue="PI" />
+					<c:selectItem itemLabel="RJ" itemValue="RJ" />
+					<c:selectItem itemLabel="RN" itemValue="RN" />
+					<c:selectItem itemLabel="RS" itemValue="RS" />
+					<c:selectItem itemLabel="RO" itemValue="RO" />
+					<c:selectItem itemLabel="RR" itemValue="RR" />
+					<c:selectItem itemLabel="SC" itemValue="SC" />
+					<c:selectItem itemLabel="SP" itemValue="SP" />
+					<c:selectItem itemLabel="SE" itemValue="SE" />
+					<c:selectItem itemLabel="TO" itemValue="TO" />
+				</p:selectOneMenu>
 
 			</h:panelGrid>
 		</p:panel>
@@ -40,9 +74,9 @@
 		<p:growl id="growl" showDetail="true" sticky="true"/>
 		<p:panel id="pedido" header="Cartão de Crédito">
 			<h:panelGrid>
-				<h:outputLabel for="numero" value="Número"/>
+				<h:outputLabel for="numero" value="Número" />
 				<p:inputMask id="numero" value="#{pedidoMB.numeroCartao}" required="true" mask="9999 9999 9999 9999"/>
-				
+
 				<h:outputLabel for="nome" value="Nome do Titular"/>
 				<p:inputText id="nome" value="#{pedidoMB.nomeTitular}" required="true" style="text-transform:uppercase" 
 				validatorMessage="Nome do titular inválido"/>
@@ -55,7 +89,7 @@
 			</h:panelGrid>
 		</p:panel>
 		<br></br>
-			<p:commandButton value="Finalizar Pedido" action="#{pedidoMB.save}" update="@form" />
+			<p:commandButton value="Finalizar Campra" action="#{pedidoMB.save}" update="@form" />
 	</h:form>
 </h:body>
 </html>

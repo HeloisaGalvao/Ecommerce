@@ -1,64 +1,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      	xmlns:h="http://xmlns.jcp.org/jsf/html"
-		xmlns:f="http://xmlns.jcp.org/jsf/facelets"
-		xmlns:c="http://xmlns.jcp.org/jsf/core"
-		xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Listar</title>
 </h:head>
 <h:body>
 	<h:form>
-	<br></br>
-		<p:dataTable var="prd" value="#{produtoMB.lista}" border="1">
+		<p:panel id="Carrinho" header="Informações de produtos">
+			<p:dataTable var="prd" value="#{produtoMB.lista}" border="1">
 
-			<p:column headerText="Descricao" style="width:200px">
-				<h:outputText value="#{prd.descricao}" />
-			</p:column>
+				<p:column headerText="Descricao" style="width:200px">
+					<h:outputText value="#{prd.descricao}" />
+				</p:column>
 
-			<p:column headerText="Modelo" style="width:70px">
-				<h:outputText value="#{prd.modelo}" />
-			</p:column>
+				<p:column headerText="Modelo" style="width:50px">
+					<h:outputText value="#{prd.modelo}" />
+				</p:column>
 
-			<p:column headerText="Tamanho" style="width:70px">
-				<h:outputText value="#{prd.tamanho}" />
-			</p:column>
+				<p:column headerText="Tamanho" style="width:50px">
+					<h:outputText value="#{prd.tamanho}" />
+				</p:column>
 
-<!-- 			<p:column headerText="Quantidade " style="width:150px"> -->
-<!-- 				<p:commandButton value="+1" action="#{produtoMB.quantidadeADD}" update="qtd" /> -->
-				
-<!-- 				<p:commandButton  value="-1" action="#{produtoMB.quantidadeREM}" update="qtd"/> -->
-<!-- 				<h:outputText id="qtd" value="#{produtoMB.quantidade}" style="padding-left: 10px" /> -->
-<!-- 			</p:column> -->
+				<p:column headerText="Preco" style="width:70px" update="qtd">
+					<h:outputText value="#{prd.preco}" />
+				</p:column>
 
+				<p:column headerText="Select Qtd " style="width:100px">
+					<p:commandButton value="+1" action="#{produtoMB.quantidadeADD}"
+						update="qtd" />
 
-			<p:column headerText="Preco" style="width:70px" update="qtd">
-				<h:outputText value="#{prd.preco}" />
-			</p:column>
+					<p:commandButton value="-1" action="#{produtoMB.quantidadeREM}"
+						update="qtd" />
+				</p:column>
 
-			<p:column headerText="Remover" style="width:70px">
-				<p:commandLink id="ajax" action="#{produtoMB.removerItem(prd)}"
-					update="@form">
-					<h:outputText value="Remover" />
-				</p:commandLink>
-			</p:column>
-			
-		</p:dataTable>
-	</h:form>
+				<p:column headerText="Quantidade" style="width:40px">
+					<h:outputText id="qtd" value="#{produtoMB.quantidade}"
+						style="padding-left: 10px" />
+				</p:column>
 
-	<h:form>
-		<p:panel id="compra" header="Informações da compra">
-			<h:panelGrid>
-			
-				<br></br>
-				<p:commandButton value="Totalizar" action="#{produtoMB.totalizar}" update="@form" />
-				<h:outputLabel for="total" value="Total" />
-				<h:outputText value="#{produtoMB.total}">
-					<c:convertNumber currencySymbol="R$" type="currency" />
-				</h:outputText>
-			</h:panelGrid>
-			
+				<p:column headerText="Remover" style="width:70px">
+					<p:commandLink id="ajax" action="#{produtoMB.removerItem(prd)}"
+						update="@form">
+						<h:outputText value="Remover" />
+					</p:commandLink>
+				</p:column>
+
+			</p:dataTable>
+			<br></br>
+			<p:commandButton value="finalizar Compra " action="#{produtoMB.finalizar}" />
+			<h:outputLabel for="total" value="Total    " />
+			<h:outputText id="total" value="#{produtoMB.total}" />
 		</p:panel>
 	</h:form>
-
-</h:body>		
+</h:body>
 </html>

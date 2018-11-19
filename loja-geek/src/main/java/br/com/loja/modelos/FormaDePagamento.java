@@ -15,7 +15,6 @@ public class FormaDePagamento implements EntidadeIN {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPagamento;
-	private TipoDePagamento tipoDePagamento;
 	private BigDecimal valor;
 	private String numeroCartao;
 	private String codigoSeguranca;
@@ -26,10 +25,9 @@ public class FormaDePagamento implements EntidadeIN {
 		
 	}
 	
-	public FormaDePagamento(int idPagamento, TipoDePagamento tipoDePagamento, BigDecimal valor, String numeroCartao,
+	public FormaDePagamento(int idPagamento, BigDecimal valor, String numeroCartao,
 		String codigoSeguranca, String validade, String nomeTitular) {
 		this.idPagamento = idPagamento;
-		this.tipoDePagamento = tipoDePagamento;
 		this.valor = valor;
 		this.numeroCartao = numeroCartao;
 		this.codigoSeguranca = codigoSeguranca;
@@ -45,12 +43,7 @@ public class FormaDePagamento implements EntidadeIN {
 	public void setIdPagamento(int idPagamento) {
 		this.idPagamento = idPagamento;
 	}
-	public TipoDePagamento getTipoDePagamento() {
-		return tipoDePagamento;
-	}
-	public void setTipoDePagamento(TipoDePagamento tipoDePagamento) {
-		this.tipoDePagamento = tipoDePagamento;
-	}
+	
 	public BigDecimal getValor() {
 		return valor;
 	}
@@ -84,7 +77,7 @@ public class FormaDePagamento implements EntidadeIN {
 
 	@Override
 	public Object getChavePrimaria() {
-		return getTipoDePagamento();
+		return getIdPagamento();
 	}
 	
 }

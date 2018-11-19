@@ -106,4 +106,8 @@ public class ProdutoMB implements Serializable {
 		System.out.println("contou");
 		System.out.println(this.total);
 	}
+	
+	public void finalizar() throws IOException {
+		 FacesContext.getCurrentInstance().getExternalContext().redirect("pedido.xhtml");
+	}
 }
