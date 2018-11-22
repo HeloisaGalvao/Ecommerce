@@ -14,6 +14,7 @@ public class LoginMB {
 	private String email , senha ;
 	private Cliente cliente;
 	private static String clienteLogado;
+	private static String nomeClienteLogado;
 	
 	public void LoginBM() {
 		if (this.cliente == null) {
@@ -44,6 +45,14 @@ public class LoginMB {
 	public static void setClienteLogado(String clienteLogado) {
 		LoginMB.clienteLogado = clienteLogado;
 	}
+	
+	public static String getNomeClienteLogado() {
+		return nomeClienteLogado;
+	}
+
+	public static void setNomeClienteLogado(String nomeClienteLogado) {
+		LoginMB.nomeClienteLogado = nomeClienteLogado;
+	}
 
 	public void cadastrar() {
 		
@@ -55,6 +64,7 @@ public class LoginMB {
 		
 		if(existe.getEmail().equals(email) && existe.getSenha().equals(senha)) {
 			LoginMB.clienteLogado = existe.getCpf();
+			LoginMB.nomeClienteLogado = existe.getNomeCliente();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
 		}else {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"login ou senha invalido",null);

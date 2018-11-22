@@ -1,16 +1,21 @@
 package br.com.loja.dao;
 
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import br.com.loja.modelos.Categoria;
+import br.com.loja.modelos.Cliente;
+import br.com.loja.modelos.Estado;
+import br.com.loja.modelos.FormaDePagamento;
+import br.com.loja.modelos.ItensDoPedido;
 import br.com.loja.modelos.Modelo;
+import br.com.loja.modelos.Pedido;
 import br.com.loja.modelos.Produto;
 import br.com.loja.modelos.TipoTamanho;
 
 public class HeloisaDAOTeste {
 
-	/*@Test
+//	@Ignore
+	@Test
 	public void inserirItensDoPedido() {
 		Cliente c = new Cliente();
 		c.setCpf("10808803484");
@@ -18,43 +23,53 @@ public class HeloisaDAOTeste {
 		c.setEmail("heloisa0rayane@gmail.com");
 		c.setSenha("123456");
 		
-		ClienteDAO cd = new ClienteDAO();
-	    cd.inserir(c);
-
-	    }
-	
-	@Test
-	public void inserirCategoria() {
+//		ClienteDAO cd = new ClienteDAO();
+//	    cd.inserir(c);
+//	    }
+//	
+//	@Test
+//	public void inserirCategoria() {
 		Categoria ct = new Categoria();
 		ct.setNomeCategoria("Moleton");
 		
-		CategoriaDAO ctd = new CategoriaDAO();
-		ctd.inserir(ct);
+//		CategoriaDAO ctd = new CategoriaDAO();
+//		ctd.inserir(ct);
 	//}
 	
 	//@Test
 	//public void inserirProduto() {
 		Produto p = new Produto();
+		p.setIdProduto(2);
 		p.setDescricao("Moleton de Star Wars");
 		p.setModelo(Modelo.FEMININO);
 		p.setPreco(39.90);
 		p.setTamanho(TipoTamanho.P);		
 		p.setCategoria(ct);
+		Produto p2 = new Produto();
+		p2.setIdProduto(3);
+		p2.setDescricao("Camisa polo");
+		p2.setModelo(Modelo.MASCULINO);
+		p2.setPreco(29.90);
+		p2.setTamanho(TipoTamanho.G);		
+		p2.setCategoria(ct);
+//		
+//		ProdutoDAO pd = new ProdutoDAO();
+//		pd.inserir(p);
 		
-		ProdutoDAO pd = new ProdutoDAO();
-		pd.inserir(p);
-		
-		Estoque e = new Estoque();
-		e.setProduto(p);
-		e.setQuantidade(3);
-		
-		EstoqueDAO ed = new EstoqueDAO();
-		ed.inserir(e);
-		}
-	
-	@Test
-	public void inserirPedido() {
+//		Estoque e = new Estoque();
+//		e.setProduto(p);
+//		e.setQuantidade(3);
+//		
+//		EstoqueDAO ed = new EstoqueDAO();
+//		ed.inserir(e);
+////		}
+//	
+//	@Test
+//	public void inserirPedido() {
 		Pedido pedido  = new Pedido();
+		//para demais inserts
+		pedido.setIdVenda(3);
+		//----
 		pedido.setCEP("5234-423");
 		pedido.setBairro("Beberibe");
 		pedido.setCidade("Recife");
@@ -65,10 +80,9 @@ public class HeloisaDAOTeste {
 		pedido.setCliente(c);
 		
 		FormaDePagamento fdp = new FormaDePagamento();
-		fdp.setTipoDePagamento(TipoDePagamento.BOLETO);
-		
-		FormaDePagamentoDAO fdpd = new FormaDePagamentoDAO();
-		fdpd.inserir(fdp);
+		fdp.setIdPagamento(1);
+//		FormaDePagamentoDAO fdpd = new FormaDePagamentoDAO();
+//		fdpd.inserir(fdp);
 		
 		pedido.setFormaDePagamento(fdp);
 		
@@ -80,11 +94,15 @@ public class HeloisaDAOTeste {
 		itens.setIdProduto(p);
 		itens.setQuantidade(1);
 		ItensDoPedidoDAO ipd = new ItensDoPedidoDAO();
-		ipd.inserir(itens);
+		//ipd.inserir(itens);
+		//para demais inserts
+		//ipd.alterar(itens);
+				//----
+		//excluir
+		ipd.excluirPorObjeto(itens);
 		
 		
-		
-	}*/
+	}
 	
 /*	@Test
 	public void atualizarEstoque() {
@@ -107,11 +125,10 @@ public class HeloisaDAOTeste {
 			System.out.println("estoque insuficiente");
 		else {
 			estoque.setQuantidade(estoque.getQuantidade() - itens.getQuantidade());
-
 			ed.alterar(estoque);
 		}
 	}*/
-
+/*
 	@Test
 	public void inserirProduto() {
 		Produto p = new Produto();
@@ -126,7 +143,7 @@ public class HeloisaDAOTeste {
 		ProdutoDAO pd = new ProdutoDAO();
 		pd.inserir(p);
 		
-		}
+		}*/
 	/*
 	@Test
 	public void listarProdutos() {
@@ -149,19 +166,64 @@ public class HeloisaDAOTeste {
 	/*@Test
 	public void inserirCarrinho() {
 		Carrinho cart = new Carrinho();
-		CarrinhoDAO cd = new CarrinhoDAO();
-		ProdutoDAO pd = new ProdutoDAO();
+			CarrinhoDAO cd = new CarrinhoDAO();
+			ProdutoDAO pd = new ProdutoDAO();
+			
+			Cliente cli = new Cliente();
+			cli.setCpf("10808803484");
+			
+			List <Produto> prd = new ArrayList<Produto>();
+			prd = pd.listarProdutos();
+			
+			cart.setCliente(cli);
+			cart.setValorTotal(3);
+			cart.setProduto(prd);
+			
+			cd.inserir(cart);
+			}*/
+	/*@Test
+	public void inseriritens() {
+		Cliente c = new Cliente();
+		Produto p = new Produto();
+		p.setIdProduto(2);
 		
-		Cliente cli = new Cliente();
-		cli.setCpf("10808803484");
+		c.setCpf("10808803484");
+		Pedido pedido  = new Pedido();
+		//buscar idvenda
+		pedido.setCEP("5234-423");
+		pedido.setBairro("Beberibe");
+		pedido.setCidade("Recife");
+		pedido.setComplemento("Próximo ao posto de saúde");
+		pedido.setEstado(Estado.PE);
+		pedido.setLogradouro("Beco da vitória");
+		pedido.setNumero("377");
+		pedido.setCliente(c);
+		ItensDoPedido itens = new ItensDoPedido();
+		itens.setIdPedido(pedido);
+		itens.setIdProduto(p);
+		itens.setQuantidade(2);
+		ItensDoPedidoDAO ipd = new ItensDoPedidoDAO();
+		ipd.alterar(itens);
+	}*/
+	
+	/*@Test
+	public void consultarCarrinho() {
+	    List<Produto> lista = new ArrayList<Produto>();
+		Carrinho carrinho = new Carrinho();
+		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
+		//carrinho = carrinhoDAO.consultarCarrinho(LoginMB.getClienteLogado());
+		carrinho = carrinhoDAO.consultarCarrinho("10808803484");
+		lista = carrinho.getProduto();
+		System.out.println("passou");
 		
-		List <Produto> prd = new ArrayList<Produto>();
-		prd = pd.listarProdutos();
-		
-		cart.setCliente(cli);
-		cart.setValorTotal(3);
-		cart.setProduto(prd);
-		
-		cd.inserir(cart);
-		}*/
+		for (Produto produto : lista) {
+			System.out.println(produto.getIdProduto());
+			System.out.println(produto.getDescricao());
+			System.out.println(produto.getPreco());
+			System.out.println(produto.getCategoria());
+			System.out.println(produto.getModelo());
+			System.out.println(produto.getTamanho());
+		}
+		System.out.println("listou");
+	}*/
 }
