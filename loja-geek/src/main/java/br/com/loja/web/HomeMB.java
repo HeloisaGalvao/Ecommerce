@@ -17,7 +17,7 @@ import br.com.loja.modelos.Produto;
 @ManagedBean
 @SessionScoped
 public class HomeMB {
-
+//matheus
 	Carrinho carrinho = new Carrinho();
 	CarrinhoDAO cart = new CarrinhoDAO();
 	ProdutoDAO pd = new ProdutoDAO();
