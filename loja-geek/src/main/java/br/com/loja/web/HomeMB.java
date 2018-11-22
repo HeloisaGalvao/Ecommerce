@@ -37,7 +37,7 @@ public class HomeMB {
 	public void init() {
 		this.logado = LoginMB.getNomeClienteLogado();
 		if(logado == null) {
-			logado = "Não Registrado";
+			logado = "Nao Registrado";
 		}
 	}
 
@@ -100,7 +100,7 @@ public class HomeMB {
 		System.out.println("chegou");
 
 		if (listaProdutosCart.isEmpty()) {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("carrinho.xhtml");
 		}else {
 			String cpf = LoginMB.getClienteLogado();
 			System.out.println(cpf);
@@ -112,7 +112,7 @@ public class HomeMB {
 			carrinho.setProduto(listaProdutosCart);
 
 			cart.inserir(carrinho);
-			FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("carrinho.xhtml");
 		}
 
 	}

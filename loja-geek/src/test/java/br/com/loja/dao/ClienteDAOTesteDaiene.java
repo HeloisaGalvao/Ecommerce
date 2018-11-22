@@ -1,6 +1,5 @@
 package br.com.loja.dao;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.loja.modelos.Categoria;
@@ -14,9 +13,9 @@ public class ClienteDAOTesteDaiene {
 	@Test
 	public void inserirProduto() {
 		Categoria categoria = new Categoria();
-		categoria.setIdCategoria(1);
+		categoria.setIdCategoria(2);
 		Produto p = new Produto();
-		p.setDescricao("Camisa Homem Aranha");
+		p.setDescricao("Homem de ferro");
 		p.setModelo(Modelo.FEMININO);
 		p.setPreco(29.99);
 		p.setTamanho(TipoTamanho.P);		
@@ -27,10 +26,9 @@ public class ClienteDAOTesteDaiene {
 
 	}
 	@Test
-	@Ignore
 	public void inserirCategoria() {
 		Categoria categoria1 = new Categoria();
-		categoria1.setNomeCategoria("Desenhos");
+		categoria1.setNomeCategoria("Desenho");
 		
 		CategoriaDAO categoriaDAO1 = new CategoriaDAO();
 		categoriaDAO1.inserir(categoria1);

@@ -86,7 +86,7 @@ public class ClienteMB implements Serializable {
 
 		String CPFMask = cpf.replaceAll("\\D", "");
 
-		//Validar se CPF é valido
+		//Validar se CPF ï¿½ valido
 		if(ValidarCPF.isCPF(CPFMask)==true){
 			
 			//validar se o cpf ja esta cadastrado
