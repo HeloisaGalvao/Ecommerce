@@ -10,8 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.loja.dao.FormaDePagamentoDAO;
-import br.com.loja.dao.PedidoDAO;
 import br.com.loja.modelos.Estado;
 import br.com.loja.modelos.FormaDePagamento;
 import br.com.loja.modelos.Pedido;
@@ -149,9 +147,9 @@ public class PedidoMB implements Serializable {
 
 	public void save() throws IOException {
 		FormaDePagamento formaDePagamento = new FormaDePagamento();
-		FormaDePagamentoDAO formaDePagamentoDAO = new FormaDePagamentoDAO();
+		//FormaDePagamentoDAO formaDePagamentoDAO = new FormaDePagamentoDAO();
 		Pedido pedido = new Pedido();
-		PedidoDAO pedidoDAO = new PedidoDAO();
+		//ItensDoPedido itens = new ItensDoPedido();
 		
 		if(logradouro.isEmpty()) {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Endereço invalido",null);
@@ -207,8 +205,12 @@ public class PedidoMB implements Serializable {
 		pedido.setComplemento(complemento);
 		pedido.setCEP(CEP);
 		
-		pedidoDAO.inserir(pedido);
-		formaDePagamentoDAO.inserir(formaDePagamento);
+//		itens.setIdPedido(pedido);
+//		itens.setIdProduto();
+//		itens.setQuantidade(1);
+//		ItensDoPedidoDAO ipd = new ItensDoPedidoDAO();
+//		ipd.inserir(itens);
+//		formaDePagamentoDAO.inserir(formaDePagamento);
 		
 	}	
 } 

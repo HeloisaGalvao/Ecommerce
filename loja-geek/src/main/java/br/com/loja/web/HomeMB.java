@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -17,7 +18,7 @@ import br.com.loja.modelos.Produto;
 @ManagedBean
 @SessionScoped
 public class HomeMB {
-//matheus
+	
 	Carrinho carrinho = new Carrinho();
 	CarrinhoDAO cart = new CarrinhoDAO();
 	ProdutoDAO pd = new ProdutoDAO();
@@ -25,18 +26,22 @@ public class HomeMB {
 	private static List<Produto> listaProdutosCart = new ArrayList<Produto>();
 	private static double valorTotal;
 	private static int quantidade = 0;
+	private String logado;
 
 	public HomeMB(){
 		if (this.lista.isEmpty())
 			this.lista = pd.listarProdutos();
 	}
+	
+	@PostConstruct
+	public void init() {
+		this.logado = LoginMB.getNomeClienteLogado();
+		if(logado == null) {
+			logado = "Não Registrado";
+		}
+	}
 
 	public void add(Produto produto) {
-		/*for (Produto prd : listaProdutosCart) {
-			if(prd.getIdProduto() = produto.getIdProduto)
-				
-		} */
-		
 		HomeMB.valorTotal += produto.getPreco();
 		increment();
 		listaProdutosCart.add(produto);
@@ -49,7 +54,14 @@ public class HomeMB {
 
 	public void setCarrinho(Carrinho carrinho) {
 		this.carrinho = carrinho;
-		System.out.println("b");
+	}
+	
+	public String getLogado() {
+		return logado;
+	}
+
+	public void setLogado(String logado) {
+		this.logado = logado;
 	}
 
 	public List<Produto> getLista() {

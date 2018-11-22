@@ -29,17 +29,13 @@ public class ProdutoMB implements Serializable {
 	public ProdutoMB() {
 		ProdutoDAO pd = new ProdutoDAO();
 		this.lista = pd.listarProdutos();
-		System.out.println("listou");
 	}
+	
 	@PostConstruct
 	public void init() {
 		for (Produto produto : lista) {
-			this.total += (produto.getPreco() * produto.getQuantidade());
+			this.total += produto.getPreco();
 		}
-	}
-	
-	public int getQuantidade() {
-		return quantidade;
 	}
 	
 	public void setTotal(double total) {
@@ -55,15 +51,20 @@ public class ProdutoMB implements Serializable {
 
 	public List<Produto> getLista() {
 		return lista;
-
 	}
 	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public int getQuantidade() {
+		return quantidade;
 	}
+
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public void setLista(List<Produto> lista) {
 		this.lista = lista;
 	}
@@ -73,38 +74,10 @@ public class ProdutoMB implements Serializable {
 	}
 
 	public void removerItem(Produto produto) throws IOException {
-		System.out.println("removeu");
 		ProdutoDAO pd = new ProdutoDAO();
 		pd.excluirPorObjeto(produto);
 		FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
 		
-	}
-	
-	public void quantidadeADD() {
-		if(quantidade > 0) {
-			quantidade = quantidade + 1;
-		}
-		
-		System.out.println("contou" + quantidade);
-	}
-	
-	public void quantidadeREM() {
-		if(quantidade > 1) {
-			quantidade = quantidade - 1;
-		}
-		
-		System.out.println("contou" + quantidade);
-	}
-	
-
-	public void totalizar() {
-	
-		for (Produto produto : lista) {
-			total =+ produto.getPreco();
-		}
-		
-		System.out.println("contou");
-		System.out.println(this.total);
 	}
 	
 	public void finalizar() throws IOException {

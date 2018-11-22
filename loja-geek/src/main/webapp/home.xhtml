@@ -7,8 +7,6 @@
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"/>
-<script src="./JS/jquery-3.3.1.min.js"></script>
-<script src="./JS/script.js"></script>
 <title>Loja Geek</title>
 </h:head>
 <h:body>
@@ -28,10 +26,10 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Produtos</a>
+                  <a class="nav-link" href="produto.xhtml">Produtos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Sobre</a>
+                  <a class="nav-link" href="cadastro.xhtml">Cadastre-se</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="login.xhtml">Login</a>
@@ -113,13 +111,7 @@
                       </h4>
                       <h5>R$29.99</h5>
                       <p class="card-text">Camisa Capitão America</p>
-                    </div>
-                   
-                    <div align='center'>
-                    	<p:commandButton id="id1" value="Adicionar" action="#{MB.Action1}" >
- 							<c:ajax listener="#{MB.Action2}" render="id2" />  
- 						</p:commandButton>
-                    </div>
+                    </div>                                     
                     <div class="card-footer">
                       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                     </div>
@@ -135,12 +127,7 @@
                       </h4>
                       <h5>R$29,99</h5>
                       <p class="card-text">Camisa Feminina Rick and Morty em IT: A Coisa</p>
-                    </div>
-                    <div align='center'>
-                    	<p:commandButton id="id2" value="Adicionar">
-<!--  							<c:ajax listener="#{MB.Action2}" render="id2" />   -->
- 						</p:commandButton>
-                    </div>
+                    </div>        
                     <div class="card-footer">
                       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                     </div>
@@ -159,14 +146,6 @@
                     </div>
                     <br/>
                     <br/>
-                    
-                    <div align='center'>
-<!--                     <input type="text" id="p1" name="p1" value="kks" /> -->
-  					<p:commandButton value="Cadastrar" action="#{hometMB.save}"/>
-  					
-                         <!-- <input type="hidden" id="p1" name="p1" value="kks" />
-                          <input type="submit" value="Submit"/>-->
-                    </div>
                     <div class="card-footer">
                         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                       </div>
@@ -174,9 +153,12 @@
                 </div>
               </div>
               <!-- Fechamento Promoção -->
-            </div>    
-    		
-          </div>
+            </div>
+            <div class="center">
+	            	
+            </div>	
+
+		</div>
           <!-- Fechament Menu -->
         </div>
         <!-- Fechament Categoria-->

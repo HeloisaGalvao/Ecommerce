@@ -54,8 +54,8 @@ public class LoginMB {
 		LoginMB.nomeClienteLogado = nomeClienteLogado;
 	}
 
-	public void cadastrar() {
-		
+	public void cadastrar() throws IOException {
+		FacesContext.getCurrentInstance().getExternalContext().redirect("cadastro.xhtml");
 	}
 	
 	public void logar() throws IOException {

@@ -1,12 +1,9 @@
 package br.com.loja.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.com.loja.modelos.Carrinho;
-import br.com.loja.modelos.Produto;
 
 public class CarrinhoDAO extends AbstractDAO{
 

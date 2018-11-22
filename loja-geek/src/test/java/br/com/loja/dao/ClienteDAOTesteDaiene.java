@@ -1,12 +1,12 @@
 package br.com.loja.dao;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.loja.modelos.Categoria;
 import br.com.loja.modelos.Modelo;
 import br.com.loja.modelos.Produto;
 import br.com.loja.modelos.TipoTamanho;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 public class ClienteDAOTesteDaiene {
 

@@ -4,55 +4,67 @@
 	xmlns:c="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Listar</title>
+	<title>Loja Geek</title>
+	<style type="text/css">
+.logo {
+	width: 5%
+}
+
+.detail {
+	width: 95%;
+	padding-left: 100px;
+}
+
+.detail td {
+	font-size: 15px;
+}
+
+.ui-datascroller .ui-datascroller-item {
+	border-bottom: 1px solid #A8A8A8;
+	padding: 0px 5px;
+	/* with the exported variables from Nova and Luna Themes*/
+	border-bottom-color: var(- -input-border-color, #A8A8A8);
+}
+</style>
 </h:head>
 <h:body>
 	<h:form>
-		<p:panel id="Carrinho" header="Informações de produtos">
-			<p:dataTable var="prd" value="#{produtoMB.lista}" border="1">
+			<p:panel>
+				<h:outputLabel value="Cliente: "/>
+				<h:outputLabel value="#{homeMB.logado}"/>
+			</p:panel>
+		<p:dataScroller value="#{homeMB.lista}" var="prod" chunkSize="10" mode="inline" scrollHeight="500">
+			<c:facet name="header"> Nossos Produtos </c:facet>
+			<h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+            <p:graphicImage name="./imagens/001.jpg" /> 
+				<p:outputPanel>
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Descrição:" />
+						<h:outputText value="#{prod.descricao}" style="font-weight: bold" />
 
-				<p:column headerText="Descricao" style="width:200px">
-					<h:outputText value="#{prd.descricao}" />
-				</p:column>
+						<h:outputText value="Preço:" />
+						<h:outputText value="#{prod.preco}" style="font-weight: bold" />
 
-				<p:column headerText="Modelo" style="width:50px">
-					<h:outputText value="#{prd.modelo}" />
-				</p:column>
+						<h:outputText value="Modelo:" />
+						<h:outputText value="#{prod.modelo}" style="font-weight: bold" />
 
-				<p:column headerText="Tamanho" style="width:50px">
-					<h:outputText value="#{prd.tamanho}" />
-				</p:column>
+						<h:outputText value="Tamanho:" />
+						<h:outputText value="#{prod.tamanho}" style="font-weight: bold" />
 
-				<p:column headerText="Preco" style="width:70px" update="qtd">
-					<h:outputText value="#{prd.preco}" />
-				</p:column>
+						<p:commandButton value="Carrinho" action="#{homeMB.add(prod)}" update="@form" style="left: 700%; top: 100% " />
 
-				<p:column headerText="Select Qtd " style="width:100px">
-					<p:commandButton value="+1" action="#{produtoMB.quantidadeADD}"
-						update="qtd" />
-
-					<p:commandButton value="-1" action="#{produtoMB.quantidadeREM}"
-						update="qtd" />
-				</p:column>
-
-				<p:column headerText="Quantidade" style="width:40px">
-					<h:outputText id="qtd" value="#{produtoMB.quantidade}"
-						style="padding-left: 10px" />
-				</p:column>
-
-				<p:column headerText="Remover" style="width:70px">
-					<p:commandLink id="ajax" action="#{produtoMB.removerItem(prd)}"
-						update="@form">
-						<h:outputText value="Remover" />
-					</p:commandLink>
-				</p:column>
-
-			</p:dataTable>
+					</h:panelGrid>
+				</p:outputPanel>
+			</h:panelGrid>
+		</p:dataScroller>
+		<h:form>
 			<br></br>
-			<p:commandButton value="finalizar Compra " action="#{produtoMB.finalizar}" />
-			<h:outputLabel for="total" value="Total    " />
-			<h:outputText id="total" value="#{produtoMB.total}" />
-		</p:panel>
+			<p:commandButton value="Ir para Carrinho" action="#{homeMB.carrinho()}" />
+			<br></br>
+			<br></br>
+			<h:outputText value="Produtos no carrinho: " />
+			<h:outputText id="output" value="#{homeMB.quantidade}" />
+		</h:form>
 	</h:form>
 </h:body>
 </html>
