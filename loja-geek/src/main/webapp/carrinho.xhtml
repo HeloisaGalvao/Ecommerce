@@ -9,7 +9,7 @@
 <h:body>
 	<h:form>
 		<p:panel id="Carrinho" header="Informações de produtos">
-			<p:dataTable var="prd" value="#{produtoMB.lista}" border="1">
+			<p:dataTable var="prd" value="#{carrinhoMB.lista}" border="1">
 
 				<p:column headerText="Descricao" style="width:200px">
 					<h:outputText value="#{prd.descricao}" />
@@ -27,31 +27,23 @@
 					<h:outputText value="#{prd.preco}" />
 				</p:column>
 
-<!-- 				<p:column headerText="Select Qtd " style="width:100px"> -->
-<!-- 					<p:commandButton value="+1" action="#{produtoMB.quantidadeADD}" -->
-<!-- 						update="qtd" /> -->
-
-<!-- 					<p:commandButton value="-1" action="#{produtoMB.quantidadeREM}" -->
-<!-- 						update="qtd" /> -->
-<!-- 				</p:column> -->
-
 				<p:column headerText="Quantidade" style="width:40px">
-					<h:outputText id="qtd" value="#{produtoMB.quantidade}"
+					<h:outputText id="qtd" value="#{carrinhoMB.quantidade}"
 						style="padding-left: 10px" />
 				</p:column>
 
 				<p:column headerText="Remover" style="width:70px">
-					<p:commandLink id="ajax" action="#{produtoMB.removerItem(prd)}"
+					<p:commandLink id="ajax" action="#{carrinhoMB.removerItem(prd)}"
 						update="@form">
 						<h:outputText value="Remover" />
 					</p:commandLink>
 				</p:column>
-				
+
 			</p:dataTable>
 			<br></br>
-			<p:commandButton value="finalizar Compra " action="#{produtoMB.finalizar}" />
-			<h:outputLabel id="total1" for="total" value="Total    " />
-			<h:outputText id="total" value="#{produtoMB.total}" />
+			<p:commandButton value="finalizar Compra " action="#{carrinhoMB.finalizar}" />
+			<h:outputLabel for="total" value="Total    " />
+			<h:outputText id="total" value="#{carrinhoMB.total}" />
 		</p:panel>
 	</h:form>
 </h:body>

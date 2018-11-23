@@ -20,8 +20,8 @@ import br.com.loja.modelos.Produto;
 public class HomeMB {
 	
 	Carrinho carrinho = new Carrinho();
-	CarrinhoDAO cart = new CarrinhoDAO();
-	ProdutoDAO pd = new ProdutoDAO();
+	CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
+	ProdutoDAO produtoDAO = new ProdutoDAO();
 	private List<Produto> lista = new ArrayList<Produto>();
 	private static List<Produto> listaProdutosCart = new ArrayList<Produto>();
 	private static double valorTotal;
@@ -30,22 +30,15 @@ public class HomeMB {
 
 	public HomeMB(){
 		if (this.lista.isEmpty())
-			this.lista = pd.listarProdutos();
+			this.lista = produtoDAO.listarProdutos();
 	}
 	
 	@PostConstruct
 	public void init() {
 		this.logado = LoginMB.getNomeClienteLogado();
 		if(logado == null) {
-			logado = "Nao Registrado";
+			logado = "Não Registrado";
 		}
-	}
-
-	public void add(Produto produto) {
-		HomeMB.valorTotal += produto.getPreco();
-		increment();
-		listaProdutosCart.add(produto);
-		System.out.println(valorTotal);
 	}
 
 	public Carrinho getCarrinho() {
@@ -96,14 +89,18 @@ public class HomeMB {
 		HomeMB.quantidade = quantidade;
 	}
 
+	public void add(Produto produto) {
+		HomeMB.valorTotal += produto.getPreco();
+		increment();
+		listaProdutosCart.add(produto);
+	}
+	
 	public void carrinho() throws IOException {
-		System.out.println("chegou");
 
 		if (listaProdutosCart.isEmpty()) {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("carrinho.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("produto.xhtml");
 		}else {
 			String cpf = LoginMB.getClienteLogado();
-			System.out.println(cpf);
 			Cliente cli = new Cliente();
 			cli.setCpf(cpf);
 
@@ -111,13 +108,13 @@ public class HomeMB {
 			carrinho.setValorTotal(HomeMB.valorTotal);
 			carrinho.setProduto(listaProdutosCart);
 
-			cart.inserir(carrinho);
+			carrinhoDAO.inserir(carrinho);
 			FacesContext.getCurrentInstance().getExternalContext().redirect("carrinho.xhtml");
 		}
 
 	}
+	
 	public void increment() {
-		System.out.println(quantidade);
 		quantidade++;
 	}
 }
