@@ -27,14 +27,6 @@
 					<h:outputText value="#{prd.preco}" />
 				</p:column>
 
-				<p:column headerText="Select Qtd " style="width:100px">
-					<p:commandButton value="+1" action="#{carMB.quantidadeADD}"
-						update="qtd" />
-
-					<p:commandButton value="-1" action="#{carMB.quantidadeREM}"
-						update="qtd" />
-				</p:column>
-
 				<p:column headerText="Quantidade" style="width:40px">
 					<h:outputText id="qtd" value="#{carMB.quantidade}"
 						style="padding-left: 10px" />

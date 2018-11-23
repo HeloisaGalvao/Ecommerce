@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -18,29 +17,17 @@ import br.com.loja.modelos.Produto;
 @SessionScoped
 public class CarMB implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	Carrinho carrinho = new Carrinho();
-	CarrinhoDAO cd = new CarrinhoDAO();
-	Produto produto = new Produto();
+	CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 	private List<Produto> lista = new ArrayList<Produto>();
 	private double total;
 	private int quantidade = 1;
 	
 	public CarMB() {
-		//ProdutoDAO pd = new ProdutoDAO();
-		//this.lista = pd.listarProdutos();
-		carrinho = cd.consultarCarrinho(LoginMB.getClienteLogado());
+		carrinho = carrinhoDAO.consultarCarrinho(LoginMB.getClienteLogado());
 		this.lista = carrinho.getProduto();
-		System.out.println("listou");
-	}
-	@PostConstruct
-	public void init() {
-		for (Produto produto : lista) {
-			this.total += (produto.getPreco() * produto.getQuantidade());
-		}
+		this.total = carrinho.getValorTotal();
 	}
 	
 	public Carrinho getCarrinho() {
@@ -55,13 +42,6 @@ public class CarMB implements Serializable {
 	
 	public void setTotal(double total) {
 		this.total = total;
-	}
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
 	}
 
 	public List<Produto> getLista() {
@@ -84,46 +64,18 @@ public class CarMB implements Serializable {
 	}
 
 	public void removerItem(Produto produto) throws IOException {
-		System.out.println("entrou Remover");
-		List<Produto> listaAux = new ArrayList<Produto>();
 		Carrinho carrinhoRemover = new Carrinho();
-		listaAux.add(produto);
-		System.out.println("add produto");
-//		carrinhoRemover.setIdCarrinho(carrinho.getIdCarrinho());
-//		System.out.println("set id");
-		carrinhoRemover.setProduto(listaAux);
-		System.out.println("setlistaAux");
-		cd.excluirPorObjeto(carrinhoRemover);
-		System.out.println("excluiu");
+		carrinhoRemover = carrinho;
+		
+		carrinho.getProduto().remove(produto);
+		
+		double valorTotal = carrinho.getValorTotal() - produto.getPreco();
+		carrinho.setValorTotal(valorTotal);
+		
+		carrinhoDAO.alterar(carrinhoRemover);
+		
 		FacesContext.getCurrentInstance().getExternalContext().redirect("car.xhtml");
 		
-	}
-	
-	public void quantidadeADD() {
-		if(quantidade > 0) {
-			quantidade = quantidade + 1;
-		}
-		
-		System.out.println("contou" + quantidade);
-	}
-	
-	public void quantidadeREM() {
-		if(quantidade > 1) {
-			quantidade = quantidade - 1;
-		}
-		
-		System.out.println("contou" + quantidade);
-	}
-	
-
-	public void totalizar() {
-	
-		for (Produto produto : lista) {
-			total =+ produto.getPreco();
-		}
-		
-		System.out.println("contou");
-		System.out.println(this.total);
 	}
 	
 	public void finalizar() throws IOException {
