@@ -3,16 +3,25 @@ package br.com.loja.web;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.loja.dao.CarrinhoDAO;
+import br.com.loja.dao.FormaDePagamentoDAO;
+import br.com.loja.dao.ItensDoPedidoDAO;
+import br.com.loja.dao.PedidoDAO;
+import br.com.loja.modelos.Carrinho;
 import br.com.loja.modelos.Estado;
 import br.com.loja.modelos.FormaDePagamento;
+import br.com.loja.modelos.ItensDoPedido;
 import br.com.loja.modelos.Pedido;
+import br.com.loja.modelos.Produto;
 
 @ManagedBean
 @ViewScoped
@@ -146,71 +155,56 @@ public class PedidoMB implements Serializable {
 	}
 
 	public void save() throws IOException {
+		Carrinho carrinho = new Carrinho();
+		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
+		List<Produto> lista = new ArrayList<Produto>();
 		FormaDePagamento formaDePagamento = new FormaDePagamento();
-		//FormaDePagamentoDAO formaDePagamentoDAO = new FormaDePagamentoDAO();
+		FormaDePagamentoDAO formaDePagamentoDAO = new FormaDePagamentoDAO();
 		Pedido pedido = new Pedido();
-		//ItensDoPedido itens = new ItensDoPedido();
+		PedidoDAO pedidoDAO = new PedidoDAO();
+		ItensDoPedido itens = new ItensDoPedido();
+	
+		carrinho = carrinhoDAO.consultarCarrinho(LoginMB.getClienteLogado());
+
+		formaDePagamento.setNumeroCartao(getNumeroCartao());
+		formaDePagamento.setNomeTitular(getNomeTitular());
+		formaDePagamento.setValidade(getValidade());
+		formaDePagamento.setCodigoSeguranca(getCodigoSeguranca());
+		formaDePagamento.setValor(BigDecimal.valueOf(carrinho.getValorTotal()));
+		formaDePagamentoDAO.inserir(formaDePagamento);
 		
-		if(logradouro.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Endereço invalido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-		if(bairro.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Bairro invalido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-		if(estado == null) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"UF invalido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-		if(cidade.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Cidade invalido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-		if(CEP.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"CEP invalido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
+		pedido.setLogradouro(getLogradouro());
+		pedido.setNumero(getNumero());
+		pedido.setBairro(getBairro());
+		pedido.setCidade(getCidade());
+		pedido.setEstado(getEstado());
+		pedido.setComplemento(getComplemento());
+		pedido.setCEP(getCEP());
+		data = Calendar.getInstance();
+		pedido.setData(data);
+		pedido.setCliente(carrinho.getCliente());
 		
-		if(numeroCartao.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Número do cartão inválido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
+		lista = carrinho.getProduto();
+		Produto produto = lista.get(0);
 		
-		if(nomeTitular.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Nome do titular do cartão inválido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
+		itens.setIdPedido(pedido);
+		itens.setIdProduto(produto);
+		itens.setQuantidade(1);
+		ItensDoPedidoDAO ipd = new ItensDoPedidoDAO();
+		ipd.inserir(itens);
 		
-		if(validade.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Validade do cartão inválida",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
+		if (lista.size()>1) {
+			pedido = pedidoDAO.consultarPedido(pedido.getCliente().getCpf(), pedido.getData());
 			
-		if(codigoSeguranca.isEmpty()) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Código de segurança inválido",null);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
+			for (int i = 1; i <= lista.size(); i++) {
+				itens.setIdPedido(pedido);
+				itens.setIdProduto(lista.get(i));
+				itens.setQuantidade(1);
+				ipd.alterar(itens);
+			}
 		}
+		carrinhoDAO.excluirCarrinho(LoginMB.getClienteLogado());
 		
-		
-		formaDePagamento.setNumeroCartao(numeroCartao);
-		formaDePagamento.setNomeTitular(nomeTitular);
-		formaDePagamento.setValidade(validade);
-		formaDePagamento.setCodigoSeguranca(codigoSeguranca);
-		pedido.setLogradouro(logradouro);
-		pedido.setNumero(numero);
-		pedido.setBairro(bairro);
-		pedido.setCidade(cidade);
-		pedido.setEstado(estado);
-		pedido.setComplemento(complemento);
-		pedido.setCEP(CEP);
-		
-//		itens.setIdPedido(pedido);
-//		itens.setIdProduto();
-//		itens.setQuantidade(1);
-//		ItensDoPedidoDAO ipd = new ItensDoPedidoDAO();
-//		ipd.inserir(itens);
-//		formaDePagamentoDAO.inserir(formaDePagamento);
-		
+		FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
 	}	
 } 
